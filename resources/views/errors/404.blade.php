@@ -1,0 +1,5 @@
+@extends('errors.layout')
+@section('code', '404')
+@section('title', 'Page introuvable')
+@section('message', 'La page ou la ressource demandée n’existe pas ou n’est plus disponible.')
+@section('action', 'Retour au tableau de bord')

@@ -1,0 +1,484 @@
+/* Task 6A — subscription workflow (Super Admin and agency read-only view) */
+.agency-subscription-page {
+    min-width: 0;
+}
+
+.agency-settings-layout.subscription-standalone {
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 960px;
+}
+
+.subscription-summary-card {
+    min-width: 0;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.subscription-summary-head {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e7edf5;
+}
+
+.subscription-plan-mark {
+    width: 52px;
+    height: 52px;
+    flex: 0 0 52px;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    color: #1677ff;
+    background: #e8f3ff;
+}
+
+.subscription-plan-mark svg {
+    width: 24px;
+    height: 24px;
+}
+
+.subscription-summary-head > div:nth-child(2) {
+    min-width: 0;
+    flex: 1;
+}
+
+.subscription-summary-head small,
+.subscription-summary-head p {
+    color: #64748b;
+    font-size: 12px;
+}
+
+.subscription-summary-head h2 {
+    margin: 2px 0;
+    color: #0f172a;
+    font-size: 23px;
+    line-height: 1.1;
+    overflow-wrap: anywhere;
+}
+
+.subscription-summary-head p {
+    margin: 0;
+}
+
+.subscription-metrics {
+    margin: 0;
+    padding: 16px 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.subscription-metrics > div {
+    min-width: 0;
+    padding: 0 14px;
+    border-right: 1px solid #e7edf5;
+}
+
+.subscription-metrics > div:first-child {
+    padding-left: 0;
+}
+
+.subscription-metrics > div:last-child {
+    padding-right: 0;
+    border-right: 0;
+}
+
+.subscription-metrics dt {
+    color: #64748b;
+    font-size: 11px;
+}
+
+.subscription-metrics dd {
+    margin: 5px 0 0;
+    color: #0f172a;
+    font-size: 13px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.subscription-progress > span {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    color: #52657c;
+    font-size: 11px;
+}
+
+.subscription-progress > span b {
+    color: #16a34a;
+}
+
+.subscription-progress > div {
+    height: 7px;
+    margin-top: 7px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: #e7edf5;
+}
+
+.subscription-progress i {
+    display: block;
+    height: 100%;
+    max-width: 100%;
+    border-radius: inherit;
+    background: linear-gradient(90deg, #16a34a, #20c47a);
+}
+
+.subscription-progress.is-warning i {
+    background: #f59e0b;
+}
+
+.subscription-progress.is-danger i {
+    background: #ef4444;
+}
+
+.subscription-progress.is-warning > span b {
+    color: #c56b00;
+}
+
+.subscription-progress.is-danger > span b {
+    color: #dc263e;
+}
+
+.subscription-created {
+    margin: 9px 0 0;
+    color: #718299;
+    font-size: 11px;
+}
+
+.subscription-state-card {
+    min-width: 0;
+    min-height: 64px;
+    padding: 13px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 1px solid;
+    border-radius: 12px;
+}
+
+.subscription-state-card > svg {
+    width: 22px;
+    height: 22px;
+    flex: 0 0 22px;
+}
+
+.subscription-state-card > div {
+    min-width: 0;
+    flex: 1;
+}
+
+.subscription-state-card h2,
+.subscription-state-card p {
+    margin: 0;
+}
+
+.subscription-state-card h2 {
+    font-size: 14px;
+}
+
+.subscription-state-card p {
+    margin-top: 3px;
+    color: #52657c;
+    font-size: 12px;
+}
+
+.subscription-state-card > a {
+    min-height: 38px;
+    padding: 0 13px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    color: #fff;
+    background: #f59e0b;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.subscription-state-card.is-success {
+    color: #15803d;
+    border-color: #b9e8ca;
+    background: #eefbf3;
+}
+
+.subscription-state-card.is-trial {
+    color: #1677ff;
+    border-color: #bedcff;
+    background: #eff6ff;
+}
+
+.subscription-state-card.is-warning {
+    color: #c56b00;
+    border-color: #f7d69a;
+    background: #fff8eb;
+}
+
+.subscription-state-card.is-danger {
+    color: #dc263e;
+    border-color: #ffc9d1;
+    background: #fff2f4;
+}
+
+.subscription-lower-grid {
+    min-width: 0;
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(0, .92fr);
+    gap: 14px;
+}
+
+.subscription-features > h2,
+.subscription-contact > h2 {
+    margin-bottom: 5px;
+}
+
+.subscription-features > p,
+.subscription-contact > p {
+    margin: 0;
+    color: #64748b;
+    font-size: 12px;
+}
+
+.subscription-features ul {
+    margin: 15px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px 14px;
+    list-style: none;
+}
+
+.subscription-features li {
+    min-width: 0;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #334155;
+    font-size: 12px;
+}
+
+.subscription-features li svg {
+    width: 17px;
+    height: 17px;
+    padding: 3px;
+    border-radius: 50%;
+    color: #fff;
+    background: #16a34a;
+}
+
+.subscription-contact-actions {
+    margin-top: 14px;
+    display: grid;
+    gap: 8px;
+}
+
+.subscription-contact-actions a {
+    min-height: 39px;
+    padding: 0 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    overflow-wrap: anywhere;
+    border: 1px solid #b9d7ff;
+    border-radius: 8px;
+    color: #086dd8;
+    background: #f2f7ff;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.subscription-contact-fallback {
+    margin-top: 13px !important;
+    padding: 11px;
+    border-radius: 8px;
+    background: #f4f7fb;
+}
+
+.subscription-account-actions {
+    margin-top: 13px;
+    padding-top: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    border-top: 1px solid #e7edf5;
+}
+
+.subscription-account-actions a,
+.subscription-account-actions button {
+    min-height: 36px;
+    padding: 0 11px;
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid #d6e1ee;
+    border-radius: 7px;
+    color: #405a76;
+    background: #fff;
+    font-size: 11px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.agency-subscription-banner {
+    min-height: 48px;
+    margin: -4px 0 12px;
+    padding: 10px 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #bfdcff;
+    border-radius: 10px;
+    color: #086dd8;
+    background: #eff6ff;
+}
+
+.agency-subscription-banner.is-warning {
+    color: #b86400;
+    border-color: #f5d18e;
+    background: #fff7e8;
+}
+
+.agency-subscription-banner > svg {
+    width: 18px;
+    height: 18px;
+}
+
+.agency-subscription-banner > span {
+    min-width: 0;
+    flex: 1;
+    font-size: 12px;
+}
+
+.agency-subscription-banner a {
+    color: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.agency-flash.warning {
+    color: #9a5700;
+    border-color: #f3cf91;
+    background: #fff7e8;
+}
+
+.agency-flash.warning > span {
+    color: #fff;
+    background: #f59e0b;
+}
+
+.subscription-current-state {
+    margin-bottom: 14px;
+}
+
+.subscription-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 11px;
+}
+
+.subscription-form-grid .full {
+    grid-column: 1 / -1;
+}
+
+.subscription-form-actions {
+    margin-top: 14px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.subscription-form-actions :is(.primary-button, .secondary-button) {
+    min-height: 40px;
+    padding: 0 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    border-radius: 8px;
+    font-size: 11px;
+    text-decoration: none;
+}
+
+.subscription-form-actions .secondary-button {
+    border: 1px solid #d6e1ee;
+    color: #52657c;
+    background: #fff;
+}
+
+@media (max-width: 1100px) {
+    .subscription-metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        row-gap: 14px;
+    }
+
+    .subscription-metrics > div:nth-child(2) {
+        border-right: 0;
+    }
+
+    .subscription-metrics > div:nth-child(3) {
+        padding-left: 0;
+    }
+}
+
+@media (max-width: 760px) {
+    .subscription-lower-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .subscription-state-card {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .subscription-state-card > a {
+        width: 100%;
+    }
+}
+
+@media (max-width: 560px) {
+    .subscription-summary-card {
+        padding: 16px;
+    }
+
+    .subscription-summary-head {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .subscription-summary-head .record-status {
+        margin-left: 66px;
+    }
+
+    .subscription-metrics,
+    .subscription-features ul,
+    .subscription-form-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .subscription-metrics > div {
+        padding: 9px 0;
+        border-right: 0;
+        border-bottom: 1px solid #e7edf5;
+    }
+
+    .subscription-metrics > div:last-child {
+        border-bottom: 0;
+    }
+
+    .subscription-form-grid .full {
+        grid-column: auto;
+    }
+
+    .subscription-form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .subscription-form-actions > * {
+        width: 100%;
+    }
+}

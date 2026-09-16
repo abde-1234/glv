@@ -1,0 +1,18 @@
+@extends('layouts.agence')
+@section('title', $reservation->displayReference())
+@section('content')
+    <a class="agency-back-link" href="{{ route('agence.reservations.index') }}"><x-icon name="arrow-left" /> Retour à la liste</a>
+    <header class="record-detail-heading"><div><h1>Réservation {{ $reservation->displayReference() }}</h1><x-status-badge type="reservation" :status="$reservation->statut" /></div><div><a class="agency-primary-button" href="{{ route('agence.reservations.edit', $reservation) }}"><x-icon name="edit" /> Modifier</a>@if ($reservation->statut !== 'annulee')<form method="POST" action="{{ route('agence.reservations.annuler', $reservation) }}" data-confirm-delete="Annuler cette réservation ?">@csrf @method('PATCH')<button class="agency-danger-button" type="submit">Annuler</button></form>@endif</div></header>
+
+    <article class="agency-card entity-detail-card">
+        <section class="detail-overview"><div><small>Référence</small><strong>{{ $reservation->displayReference() }}</strong></div><div><small>Statut</small><x-status-badge type="reservation" :status="$reservation->statut" /></div><div><small>Date de création</small><strong>{{ $reservation->created_at->format('d/m/Y à H:i') }}</strong></div></section>
+        <div class="entity-detail-grid">
+            <section class="detail-block"><h2>Client</h2><div class="detail-identity"><span>{{ str($reservation->client?->nom)->substr(0, 2)->upper() }}</span><p><strong>{{ $reservation->client?->nom ?? '—' }}</strong><small>{{ $reservation->client?->telephone ?: '—' }}</small><small>{{ $reservation->client?->email ?: '—' }}</small><small>{{ $reservation->client?->ville ?: '—' }}</small></p></div></section>
+            <section class="detail-block"><h2>Voiture</h2><div class="detail-vehicle"><img src="{{ $reservation->voiture?->photo ? asset('storage/'.$reservation->voiture->photo) : asset('images/glv-login-hero.png') }}" alt="Voiture"><p><strong>{{ $reservation->voiture?->marque }} {{ $reservation->voiture?->modele }}</strong><small>{{ $reservation->voiture?->immatriculation }}</small><small>{{ $reservation->voiture?->categorie ?: '—' }}</small></p></div></section>
+            <section class="detail-block detail-period"><h2>Période de location</h2><div><span><x-icon name="calendar" /></span><p><small>Date début</small><strong>{{ $reservation->date_debut->format('d/m/Y') }}</strong></p><p><small>Date fin</small><strong>{{ $reservation->date_fin->format('d/m/Y') }}</strong></p><p><small>Durée</small><strong>{{ $reservation->durationInDays() }} jour(s)</strong></p></div></section>
+            <section class="detail-block detail-price"><h2>Tarif</h2><div><span><x-icon name="card" /></span><p><small>Prix par jour</small><strong>{{ number_format((float) $reservation->prix_jour, 0, ',', ' ') }} MAD</strong><small>Montant total</small><strong>{{ number_format((float) $reservation->montant, 0, ',', ' ') }} MAD</strong></p></div></section>
+            <section class="detail-block detail-notes"><h2>Notes</h2><p>{{ $reservation->notes ?: 'Aucune note pour cette réservation.' }}</p></section>
+        </div>
+        <footer class="entity-detail-footer">@php($linkedContract = $reservation->contrats->first()) @if ($linkedContract)<a class="agency-secondary-button" href="{{ route('agence.contrats.show', $linkedContract) }}"><x-icon name="card" /> Voir le contrat</a>@elseif ($reservation->statut !== 'annulee')<a class="agency-primary-button" href="{{ route('agence.reservations.contrat.create', $reservation) }}"><x-icon name="plus" /> Créer un contrat</a>@endif</footer>
+    </article>
+@endsection
