@@ -39,10 +39,18 @@
     @elseif ($agence->isSubscriptionTrial())
         <aside class="agency-subscription-banner" role="status">
             <x-icon name="info" width="18" height="18" />
-            <span>Période d’essai — {{ $agence->subscriptionDaysRemaining() }} jour(s) restant(s).</span>
+            <span>{{ $agence->subscriptionDaysRemaining() <= 7 ? 'Votre période d’essai arrive bientôt à expiration.' : 'Période d’essai' }} — {{ $agence->subscriptionDaysRemaining() }} jour(s) restant(s).</span>
             <a href="{{ route('agence.settings.subscription') }}">Voir l’abonnement</a>
         </aside>
     @endif
+
+    <section class="agency-card dashboard-subscription-card">
+        <div><small>Votre abonnement</small><h2>{{ $agence->type_abonnement ?: 'Non défini' }}</h2></div>
+        <x-status-badge type="agency" :status="$agence->subscriptionStatus()" />
+        <p>{{ $agence->date_expiration ? 'Expire le '.$agence->date_expiration->format('d/m/Y') : 'Sans échéance' }}</p>
+        <strong>{{ $agence->subscriptionDaysRemaining() === null ? 'Durée illimitée' : $agence->subscriptionDaysRemaining().' jours restants' }}</strong>
+        <a href="{{ route('agence.settings.subscription') }}">Gérer mon abonnement <x-icon name="arrow-right" /></a>
+    </section>
 
     <section class="agency-kpi-grid" aria-label="Indicateurs clés">
         <article class="agency-kpi-card">

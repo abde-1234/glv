@@ -57,7 +57,8 @@
             @elseif ($agence->isSubscriptionTrial())
                 <section class="subscription-state-card is-trial" role="status">
                     <x-icon name="clock" width="22" height="22" />
-                    <div><h2>Période d’essai</h2><p>Votre agence conserve l’accès aux modules pendant encore {{ $remainingDays }} jour(s).</p></div>
+                    <div><h2>Période d’essai</h2><p>{{ $remainingDays !== null && $remainingDays <= 7 ? 'Votre période d’essai arrive bientôt à expiration.' : 'Votre agence conserve l’accès aux modules.' }} Il vous reste {{ $remainingDays }} jour(s).</p></div>
+                    @if ($remainingDays !== null && $remainingDays <= 7)<a href="#contact-support">Contacter le Super Admin</a>@endif
                 </section>
             @elseif ($agence->isSubscriptionActive())
                 <section class="subscription-state-card is-success" role="status">
@@ -71,6 +72,35 @@
                 </section>
             @endif
 
+            <section class="agency-card renewal-request-card" id="renouvellement">
+                <div>
+                    <h2>Demande de renouvellement</h2>
+                    <p>Transmettez votre demande au Super Admin. Le plan et l’échéance actuels sont joints automatiquement.</p>
+                </div>
+                @if ($pendingRenewal)
+                    <div class="renewal-pending">
+                        <span>EN ATTENTE</span>
+                        <p>Une demande de renouvellement est déjà en cours.</p>
+                        <small>Envoyée le {{ $pendingRenewal->created_at->format('d/m/Y à H:i') }} par {{ $pendingRenewal->requester->name }}</small>
+                    </div>
+                @else
+                    <form method="POST" action="{{ route('agence.renewals.store') }}">
+                        @csrf
+                        <dl>
+                            <div><dt>Agence</dt><dd>{{ $agence->nom }}</dd></div>
+                            <div><dt>Plan actuel</dt><dd>{{ $agence->type_abonnement ?: 'Non défini' }}</dd></div>
+                            <div><dt>Expiration</dt><dd>{{ $agence->date_expiration?->format('d/m/Y') ?? 'Sans échéance' }}</dd></div>
+                            <div><dt>Jours restants</dt><dd>{{ $remainingDays === null ? '—' : $remainingDays }}</dd></div>
+                        </dl>
+                        <label class="form-field"><span>Message (optionnel)</span><textarea name="message" rows="3" maxlength="2000">{{ old('message') }}</textarea>@error('message')<small>{{ $message }}</small>@enderror</label>
+                        <button class="primary-button" type="submit"><x-icon name="mail" /> Envoyer la demande</button>
+                    </form>
+                @endif
+                @if ($renewalHistory->isNotEmpty())
+                    <div class="renewal-history"><strong>Historique récent</strong>@foreach ($renewalHistory as $renewal)<p><span class="renewal-status is-{{ $renewal->status }}">{{ ['pending' => 'En attente', 'approved' => 'Approuvée', 'rejected' => 'Refusée'][$renewal->status] }}</span> {{ $renewal->created_at->format('d/m/Y') }}</p>@endforeach</div>
+                @endif
+            </section>
+
             <div class="subscription-lower-grid">
                 <section class="agency-card settings-panel subscription-features">
                     <h2>Fonctionnalités du plan</h2>
@@ -82,7 +112,7 @@
                     </ul>
                 </section>
 
-                <section class="agency-card settings-panel subscription-contact" id="renouvellement">
+                <section class="agency-card settings-panel subscription-contact" id="contact-support">
                     <h2>Contacter l’administrateur</h2>
                     <p>Contactez l’administrateur GLV pour renouveler ou modifier votre abonnement.</p>
                     @if ($supportEmail || $supportPhone)

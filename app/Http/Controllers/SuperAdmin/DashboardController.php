@@ -4,6 +4,7 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Agence;
+use App\Models\RenewalRequest;
 use App\Models\Reservation;
 use App\Models\Voiture;
 use Illuminate\View\View;
@@ -46,6 +47,11 @@ class DashboardController extends Controller
                 'essai' => (int) ($subscriptionCounts['essai'] ?? 0),
                 'expire' => (int) ($subscriptionCounts['expire'] ?? 0),
                 'suspendu' => (int) ($subscriptionCounts['suspendu'] ?? 0),
+            ],
+            'subscriptionAttention' => [
+                'expired' => Agence::query()->withSubscriptionStatus('expire')->count(),
+                'tomorrow' => Agence::query()->whereNotIn('statut', ['suspendu', 'expire'])->whereDate('date_expiration', $today->copy()->addDay())->count(),
+                'pending' => RenewalRequest::query()->where('status', RenewalRequest::PENDING)->count(),
             ],
         ]);
     }

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\SuperAdmin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Agence;
+use App\Models\RenewalRequest;
+use App\Notifications\GlvNotification;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -31,6 +33,12 @@ class AbonnementController extends Controller
         $selectedAgence = $request->filled('edit')
             ? Agence::with('primaryAdmin')->find($request->integer('edit'))
             : null;
+        $pendingRenewals = RenewalRequest::query()
+            ->with(['agence', 'requester'])
+            ->where('status', RenewalRequest::PENDING)
+            ->oldest()
+            ->get();
+        $today = today();
 
         return view('super-admin.abonnements.index', [
             'agences' => $agences,
@@ -41,11 +49,18 @@ class AbonnementController extends Controller
             'inactiveSubscriptions' => Agence::query()->withSubscriptionStatus('expire')->count()
                 + Agence::query()->withSubscriptionStatus('suspendu')->count(),
             'plans' => $this->plans(),
+            'pendingRenewals' => $pendingRenewals,
+            'expiredCount' => Agence::query()->withSubscriptionStatus('expire')->count(),
+            'urgentCount' => Agence::query()->whereNotIn('statut', ['suspendu', 'expire'])
+                ->whereBetween('date_expiration', [$today, $today->copy()->addDays(7)])->count(),
+            'warningCount' => Agence::query()->whereNotIn('statut', ['suspendu', 'expire'])
+                ->whereBetween('date_expiration', [$today->copy()->addDays(8), $today->copy()->addDays(30)])->count(),
         ]);
     }
 
     public function update(Request $request, Agence $agence): RedirectResponse
     {
+        $previousExpiration = $agence->date_expiration?->copy();
         $request->mergeIfMissing([
             'type_abonnement' => $agence->type_abonnement,
             'date_debut_abonnement' => $agence->date_debut_abonnement?->format('Y-m-d'),
@@ -62,7 +77,23 @@ class AbonnementController extends Controller
             'montant_abonnement' => ['nullable', 'numeric', 'min:0', 'max:9999999999.99'],
         ]);
 
+        $isRenewal = isset($validated['date_expiration'])
+            && ($previousExpiration === null || $agence->date_expiration?->lt($validated['date_expiration']));
+        if ($isRenewal && $agence->statut === 'expire' && $validated['statut'] !== 'suspendu') {
+            $validated['statut'] = 'actif';
+        }
+
         $agence->update($validated);
+
+        if ($isRenewal) {
+            $agence->users()->where('statut', 'actif')->get()->each->notify(new GlvNotification([
+                'type' => 'subscription_renewed',
+                'title' => 'Abonnement renouvelé',
+                'message' => 'Votre abonnement a été renouvelé.',
+                'url' => route('agence.settings.subscription'),
+                'agency_id' => $agence->id,
+            ]));
+        }
 
         return redirect()
             ->route('super-admin.abonnements.index', ['edit' => $agence->id])
@@ -71,7 +102,7 @@ class AbonnementController extends Controller
 
     private function plans(): Collection
     {
-        return collect(['Essai', 'Basic', 'Pro'])
+        return collect(['Essai', 'Basic', 'Pro', 'Premium'])
             ->merge(Agence::query()
                 ->whereNotNull('type_abonnement')
                 ->distinct()

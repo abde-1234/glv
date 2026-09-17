@@ -79,7 +79,7 @@
                 </form>
 
                 <div class="agency-topbar-actions">
-                    <span class="agency-notification" aria-label="Notifications"><x-icon name="bell" /><i></i></span>
+                    <x-notification-menu />
                     <details class="agency-profile-menu">
                         <summary>
                             <span class="agency-profile-avatar">{{ $agencyInitials ?: 'AA' }}</span>

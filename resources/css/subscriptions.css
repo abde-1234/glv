@@ -482,3 +482,73 @@
         width: 100%;
     }
 }
+
+.notification-menu { position: relative; }
+.notification-menu > summary { position: relative; width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid #e2e8f0; border-radius: 10px; color: #52657c; background: #fff; cursor: pointer; list-style: none; }
+.notification-menu > summary::-webkit-details-marker { display: none; }
+.notification-menu > summary svg { width: 20px; }
+.notification-menu > summary b { position: absolute; top: -6px; right: -6px; min-width: 19px; height: 19px; padding: 0 5px; display: grid; place-items: center; border: 2px solid #fff; border-radius: 999px; color: #fff; background: #ef4056; font-size: 9px; }
+.notification-dropdown { position: absolute; z-index: 80; top: calc(100% + 10px); right: 0; width: min(390px, calc(100vw - 24px)); overflow: hidden; border: 1px solid #dce6f1; border-radius: 12px; background: #fff; box-shadow: 0 18px 50px rgba(15, 42, 70, .18); }
+.notification-dropdown > header { padding: 13px 15px; display: flex; align-items: center; justify-content: space-between; gap: 12px; border-bottom: 1px solid #e8eef5; }
+.notification-dropdown > header span { display: grid; }
+.notification-dropdown > header small { color: #718299; font-size: 10px; }
+.notification-dropdown > header button { border: 0; color: #0879f9; background: none; font-size: 10px; font-weight: 700; cursor: pointer; }
+.notification-list { max-height: 390px; overflow-y: auto; }
+.notification-item { margin: 0; }
+.notification-item button { width: 100%; padding: 12px 15px; display: flex; gap: 9px; border: 0; border-bottom: 1px solid #eef2f7; text-align: left; background: #fff; cursor: pointer; }
+.notification-item.is-unread button { background: #f1f7ff; }
+.notification-item i { width: 7px; height: 7px; margin-top: 5px; flex: 0 0 7px; border-radius: 50%; background: transparent; }
+.notification-item.is-unread i { background: #0879f9; }
+.notification-item span { min-width: 0; display: grid; gap: 2px; }
+.notification-item strong { color: #172f4a; font-size: 11px; }
+.notification-item small { color: #52677f; font-size: 10px; overflow-wrap: anywhere; }
+.notification-item time { color: #8a9aae; font-size: 9px; }
+.notification-empty { margin: 0; padding: 25px; color: #718299; text-align: center; font-size: 11px; }
+
+.dashboard-subscription-card { margin-bottom: 15px; padding: 16px 18px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 5px 16px; align-items: center; border-left: 4px solid #0879f9; }
+.dashboard-subscription-card h2 { margin: 2px 0; font-size: 20px; }
+.dashboard-subscription-card small, .dashboard-subscription-card p { color: #718299; }
+.dashboard-subscription-card p, .dashboard-subscription-card strong { margin: 0; font-size: 12px; }
+.dashboard-subscription-card > a { grid-column: 2; grid-row: 2 / span 2; display: inline-flex; align-items: center; gap: 5px; color: #0879f9; font-size: 11px; font-weight: 700; text-decoration: none; }
+.dashboard-subscription-card > a svg { width: 14px; }
+
+.renewal-request-card { padding: 18px; }
+.renewal-request-card > div:first-child h2 { margin: 0 0 4px; font-size: 15px; }
+.renewal-request-card > div:first-child p { margin: 0 0 15px; color: #64748b; font-size: 11px; }
+.renewal-request-card form dl { margin: 0 0 13px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 9px; }
+.renewal-request-card form dl div { padding: 9px; border-radius: 8px; background: #f5f8fc; }
+.renewal-request-card dt { color: #718299; font-size: 9px; }
+.renewal-request-card dd { margin: 3px 0 0; font-size: 11px; font-weight: 700; }
+.renewal-request-card textarea, .renewal-process :is(input, select, textarea) { width: 100%; border: 1px solid #d5e0ec; border-radius: 7px; padding: 8px; background: #fff; }
+.renewal-request-card .primary-button { margin-top: 10px; min-height: 39px; display: inline-flex; align-items: center; gap: 7px; }
+.renewal-pending { padding: 13px; border: 1px solid #f4d08d; border-radius: 9px; background: #fff8eb; }
+.renewal-pending span, .renewal-status { padding: 3px 7px; border-radius: 999px; color: #9a5700; background: #ffedc7; font-size: 9px; font-weight: 800; }
+.renewal-pending p { margin: 8px 0 2px; font-size: 12px; font-weight: 700; }
+.renewal-pending small { color: #718299; }
+.renewal-history { margin-top: 14px; padding-top: 12px; border-top: 1px solid #e7edf5; }
+.renewal-history p { margin: 7px 0 0; font-size: 10px; }
+.renewal-status.is-approved { color: #087746; background: #dff8ec; }
+.renewal-status.is-rejected { color: #bc2940; background: #ffe7eb; }
+
+.subscription-attention { margin-bottom: 16px; padding: 17px; border: 1px solid #dfe8f2; border-radius: 12px; background: #fff; }
+.subscription-attention h2 { margin: 2px 0 12px; font-size: 15px; }
+.subscription-attention > div { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+.subscription-attention article { padding: 12px; display: grid; border-radius: 9px; background: #f5f8fc; }
+.subscription-attention article strong { font-size: 22px; }.subscription-attention article span { font-size: 10px; }
+.subscription-attention .is-danger { color: #bc2940; background: #fff0f2; }.subscription-attention .is-urgent { color: #c2410c; background: #fff2e8; }.subscription-attention .is-warning { color: #9a5700; background: #fff8e7; }.subscription-attention .is-info { color: #086dd8; background: #eef6ff; }
+.renewal-admin-list { margin-top: 16px; }
+.renewal-process { position: relative; }.renewal-process summary { color: #0879f9; font-size: 10px; font-weight: 700; cursor: pointer; }
+.renewal-process form { position: absolute; z-index: 20; right: 0; width: 360px; padding: 13px; display: grid; grid-template-columns: 1fr 1fr; gap: 9px; border: 1px solid #d8e3ee; border-radius: 10px; background: #fff; box-shadow: 0 15px 40px rgba(15,42,70,.18); }
+.renewal-process label { display: grid; gap: 4px; font-size: 9px; }.renewal-process .full, .renewal-process form > div { grid-column: 1/-1; }.renewal-process form > div { display: flex; gap: 7px; }
+.danger-button { min-height: 36px; padding: 0 11px; border: 0; border-radius: 7px; color: #fff; background: #dc263e; font-size: 10px; font-weight: 700; cursor: pointer; }
+.dashboard-subscription-attention { margin-bottom: 16px; padding: 16px; display: flex; align-items: center; gap: 15px; }.dashboard-subscription-attention > div { flex: 1; display: flex; align-items: center; gap: 10px; }.dashboard-subscription-attention > div span:last-child { display: grid; }.dashboard-subscription-attention small { color: #718299; }.dashboard-subscription-attention p { margin: 0; color: #52677f; font-size: 11px; }
+
+@media (max-width: 760px) {
+    .subscription-attention > div, .renewal-request-card form dl { grid-template-columns: repeat(2, 1fr); }
+    .dashboard-subscription-attention { align-items: stretch; flex-direction: column; }
+}
+@media (max-width: 560px) {
+    .dashboard-subscription-card { grid-template-columns: 1fr; }.dashboard-subscription-card > a { grid-column: 1; grid-row: auto; margin-top: 7px; }
+    .subscription-attention > div, .renewal-request-card form dl { grid-template-columns: 1fr; }
+    .renewal-process form { position: fixed; right: 12px; bottom: 12px; left: 12px; width: auto; max-height: calc(100vh - 24px); overflow: auto; }
+}

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Tests\Feature\FinalQaWorkflowTest" file="C:\Users\dell\glv\tests\Feature\FinalQaWorkflowTest.php" tests="6" assertions="439" errors="0" failures="0" skipped="0" time="10.528243">
+    <testsuite name="Tests\Feature\FinalQaWorkflowTest::test_complete_http_workflow_through_expiration_and_restored_access" tests="3" assertions="387" errors="0" failures="0" skipped="0" time="9.582270">
+      <testcase name="test_complete_http_workflow_through_expiration_and_restored_access with data set &quot;Atlas Rent&quot;" file="C:\Users\dell\glv\tests\Feature\FinalQaWorkflowTest.php" line="35" class="Tests\Feature\FinalQaWorkflowTest" classname="Tests.Feature.FinalQaWorkflowTest" assertions="129" time="4.623010"/>
+      <testcase name="test_complete_http_workflow_through_expiration_and_restored_access with data set &quot;Rif Car&quot;" file="C:\Users\dell\glv\tests\Feature\FinalQaWorkflowTest.php" line="35" class="Tests\Feature\FinalQaWorkflowTest" classname="Tests.Feature.FinalQaWorkflowTest" assertions="129" time="2.679993"/>
+      <testcase name="test_complete_http_workflow_through_expiration_and_restored_access with data set &quot;Ocean Cars&quot;" file="C:\Users\dell\glv\tests\Feature\FinalQaWorkflowTest.php" line="35" class="Tests\Feature\FinalQaWorkflowTest" classname="Tests.Feature.FinalQaWorkflowTest" assertions="129" time="2.279266"/>
+    </testsuite>
+    <testcase name="test_new_routes_require_authentication_and_csrf" file="C:\Users\dell\glv\tests\Feature\FinalQaWorkflowTest.php" line="145" class="Tests\Feature\FinalQaWorkflowTest" classname="Tests.Feature.FinalQaWorkflowTest" assertions="11" time="0.070962"/>
+    <testcase name="test_renewals_notifications_and_subscription_are_isolated_between_agencies" file="C:\Users\dell\glv\tests\Feature\FinalQaWorkflowTest.php" line="158" class="Tests\Feature\FinalQaWorkflowTest" classname="Tests.Feature.FinalQaWorkflowTest" assertions="9" time="0.084449"/>
+    <testcase name="test_subscription_states_preserve_expiration_boundary_and_suspension" file="C:\Users\dell\glv\tests\Feature\FinalQaWorkflowTest.php" line="174" class="Tests\Feature\FinalQaWorkflowTest" classname="Tests.Feature.FinalQaWorkflowTest" assertions="32" time="0.790562"/>
+  </testsuite>
+</testsuites>

@@ -8,12 +8,15 @@ use App\Http\Controllers\Agence\DashboardController as AgenceDashboardController
 use App\Http\Controllers\Agence\DocumentController;
 use App\Http\Controllers\Agence\ProfileController;
 use App\Http\Controllers\Agence\ReservationController;
+use App\Http\Controllers\Agence\RenewalRequestController as AgencyRenewalRequestController;
 use App\Http\Controllers\Agence\SettingsController;
 use App\Http\Controllers\Agence\VoitureController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\SuperAdmin\AbonnementController;
 use App\Http\Controllers\SuperAdmin\AgenceController;
 use App\Http\Controllers\SuperAdmin\DashboardController;
+use App\Http\Controllers\SuperAdmin\RenewalRequestController as SuperAdminRenewalRequestController;
 use App\Http\Controllers\SuperAdmin\SuperAdminSettingsController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +40,11 @@ Route::post('/logout', [LoginController::class, 'destroy'])
     ->middleware('auth')
     ->name('logout');
 
+Route::middleware('auth')->group(function () {
+    Route::patch('/notifications/{notification}/read', [NotificationController::class, 'read'])->name('notifications.read');
+    Route::patch('/notifications/read-all', [NotificationController::class, 'readAll'])->name('notifications.read-all');
+});
+
 Route::prefix('super-admin')->name('super-admin.')->middleware(['auth', 'super_admin'])->group(function () {
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
     Route::get('/parametres', [SuperAdminSettingsController::class, 'edit'])->name('settings.edit');
@@ -52,6 +60,7 @@ Route::prefix('super-admin')->name('super-admin.')->middleware(['auth', 'super_a
     Route::resource('agences', AgenceController::class);
     Route::get('/abonnements', [AbonnementController::class, 'index'])->name('abonnements.index');
     Route::patch('/abonnements/{agence}', [AbonnementController::class, 'update'])->name('abonnements.update');
+    Route::patch('/demandes-renouvellement/{agence}', [SuperAdminRenewalRequestController::class, 'update'])->name('renewals.update');
 });
 
 Route::middleware(['auth', 'admin_agence'])->group(function () {
@@ -81,6 +90,7 @@ Route::middleware(['auth', 'admin_agence'])->group(function () {
     Route::get('/parametres/contact', [SettingsController::class, 'contact'])->name('agence.settings.contact');
     Route::put('/parametres/contact', [SettingsController::class, 'updateContact'])->name('agence.settings.contact.update');
     Route::get('/parametres/abonnement', [SettingsController::class, 'subscription'])->name('agence.settings.subscription');
+    Route::post('/parametres/abonnement/demande', [AgencyRenewalRequestController::class, 'store'])->name('agence.renewals.store');
     Route::get('/parametres/preferences', [SettingsController::class, 'preferences'])->name('agence.settings.preferences');
     Route::put('/parametres/preferences', [SettingsController::class, 'updatePreferences'])->name('agence.settings.preferences.update');
     Route::get('/parametres/documents', [DocumentController::class, 'index'])->name('agence.settings.documents.index');

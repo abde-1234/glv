@@ -15,6 +15,16 @@
         <article class="kpi-card"><span class="kpi-icon red"><x-icon name="pause" /></span><div><p>Expirés / suspendus</p><strong>{{ $inactiveSubscriptions }}</strong><small>à régulariser</small></div></article>
     </section>
 
+    <section class="subscription-attention" aria-label="Abonnements nécessitant votre attention">
+        <header><div><p class="page-eyebrow">Alertes</p><h2>Abonnements nécessitant votre attention</h2></div></header>
+        <div>
+            <article class="is-danger"><strong>{{ $expiredCount }}</strong><span>abonnement(s) expiré(s)</span></article>
+            <article class="is-urgent"><strong>{{ $urgentCount }}</strong><span>expire(nt) dans 7 jours</span></article>
+            <article class="is-warning"><strong>{{ $warningCount }}</strong><span>expire(nt) dans 30 jours</span></article>
+            <article class="is-info"><strong>{{ $pendingRenewals->count() }}</strong><span>demande(s) en attente</span></article>
+        </div>
+    </section>
+
     <section @class(['subscriptions-layout', 'has-details' => $selectedAgence])>
         <article class="content-card list-card subscriptions-list">
             <form class="filter-bar" method="GET" action="{{ route('super-admin.abonnements.index') }}">
@@ -43,7 +53,7 @@
                             <td>{{ $agence->date_expiration?->format('d/m/Y') ?? '—' }}</td>
                             <td><span class="days-badge {{ $daysClass }}">{{ $days === null ? 'Sans échéance' : $days.' jours' }}</span></td>
                             <td>{{ $agence->montant_abonnement === null ? '—' : number_format((float) $agence->montant_abonnement, 2, ',', ' ').' MAD' }}</td>
-                            <td><a class="table-edit-button" href="{{ route('super-admin.abonnements.index', array_merge(request()->except('page'), ['edit' => $agence->id])) }}"><x-icon name="edit" /> Modifier</a></td>
+                            <td><a class="table-edit-button" href="{{ route('super-admin.abonnements.index', array_merge(request()->except('page'), ['edit' => $agence->id])) }}"><x-icon name="edit" /> Voir / Modifier / Renouveler</a></td>
                         </tr>
                     @empty
                         <tr><td colspan="8"><div class="empty-state"><strong>Aucun abonnement trouvé</strong><span>Essayez avec d’autres filtres.</span></div></td></tr>
@@ -86,5 +96,36 @@
                 <div class="tip-box"><x-icon name="info" /><span><strong>Gestion manuelle</strong><small>Aucun paiement automatique n’est déclenché.</small></span></div>
             </aside>
         @endif
+    </section>
+
+    <section class="content-card renewal-admin-list" id="demandes-renouvellement">
+        <div class="card-heading"><div><span class="section-icon"><x-icon name="mail" /></span><h2>Demandes de renouvellement</h2></div></div>
+        <div class="table-scroll">
+            <table class="data-table">
+                <thead><tr><th>Agence</th><th>Demandeur</th><th>Plan actuel</th><th>Expiration</th><th>Date demande</th><th>Statut</th><th>Traitement</th></tr></thead>
+                <tbody>
+                @forelse ($pendingRenewals as $renewal)
+                    <tr>
+                        <td><strong>{{ $renewal->agence->nom }}</strong></td><td>{{ $renewal->requester->name }}</td><td>{{ $renewal->current_plan ?: '—' }}</td><td>{{ $renewal->current_expiration?->format('d/m/Y') ?? '—' }}</td><td>{{ $renewal->created_at->format('d/m/Y H:i') }}</td><td><span class="renewal-status is-pending">En attente</span></td>
+                        <td>
+                            <details class="renewal-process"><summary>Traiter</summary>
+                                <form method="POST" action="{{ route('super-admin.renewals.update', $renewal) }}">
+                                    @csrf @method('PATCH')
+                                    <label>Plan<select name="type_abonnement">@foreach ($plans as $plan)<option value="{{ $plan }}" @selected($renewal->current_plan === $plan)>{{ $plan }}</option>@endforeach</select></label>
+                                    <label>Début<input type="date" name="date_debut_abonnement" value="{{ today()->format('Y-m-d') }}"></label>
+                                    <label>Fin<input type="date" name="date_expiration" value="{{ today()->addYear()->format('Y-m-d') }}"></label>
+                                    <label>Montant<input type="number" name="montant_abonnement" min="0" step="0.01" value="{{ $renewal->agence->montant_abonnement }}"></label>
+                                    <label class="full">Décision<textarea name="decision_message" rows="2"></textarea></label>
+                                    <div><button class="primary-button" name="decision" value="approved" type="submit">Accepter et renouveler</button><button class="danger-button" name="decision" value="rejected" type="submit">Refuser</button></div>
+                                </form>
+                            </details>
+                        </td>
+                    </tr>
+                @empty
+                    <tr><td colspan="7"><div class="empty-state">Aucune demande en attente.</div></td></tr>
+                @endforelse
+                </tbody>
+            </table>
+        </div>
     </section>
 @endsection

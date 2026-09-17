@@ -84,6 +84,11 @@ class Agence extends Model
         return $this->hasMany(AgenceDocument::class);
     }
 
+    public function renewalRequests(): HasMany
+    {
+        return $this->hasMany(RenewalRequest::class);
+    }
+
     public function subscriptionDaysRemaining(): ?int
     {
         if ($this->date_expiration === null) {
@@ -127,7 +132,17 @@ class Agence extends Model
     {
         $days = $this->subscriptionDaysRemaining();
 
-        return $this->hasValidSubscription()
+        return $this->isSubscriptionActive()
+            && $days !== null
+            && $days > 0
+            && $days <= 30;
+    }
+
+    public function isSubscriptionUrgent(): bool
+    {
+        $days = $this->subscriptionDaysRemaining();
+
+        return $this->isSubscriptionActive()
             && $days !== null
             && $days > 0
             && $days <= 7;

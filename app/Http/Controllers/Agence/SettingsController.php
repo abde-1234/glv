@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Agence;
 use App\Http\Controllers\Controller;
 use App\Models\Agence;
 use App\Models\PlatformSetting;
+use App\Models\RenewalRequest;
 use App\Models\User;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -76,6 +77,8 @@ class SettingsController extends Controller
             'supportEmail' => $platform->support_email,
             'supportPhone' => $platform->support_phone,
             'canManageAgency' => $request->user()->role === User::ROLE_ADMIN_AGENCE,
+            'pendingRenewal' => $agence->renewalRequests()->with('requester')->where('status', RenewalRequest::PENDING)->latest()->first(),
+            'renewalHistory' => $agence->renewalRequests()->with(['requester', 'processor'])->latest()->limit(5)->get(),
         ]);
     }
 

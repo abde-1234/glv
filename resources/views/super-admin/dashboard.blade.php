@@ -48,6 +48,15 @@
         </article>
     </section>
 
+    @php
+        $attentionTotal = array_sum($subscriptionAttention);
+    @endphp
+    <section class="content-card dashboard-subscription-attention">
+        <div><span class="section-icon"><x-icon name="bell" /></span><span><small>Abonnements à surveiller</small><strong>{{ $attentionTotal }} agence(s) nécessitent votre attention</strong></span></div>
+        <p><b>{{ $subscriptionAttention['expired'] }}</b> expiré(s) · <b>{{ $subscriptionAttention['tomorrow'] }}</b> expire(nt) demain · <b>{{ $subscriptionAttention['pending'] }}</b> demande(s) en attente</p>
+        <a class="primary-button" href="{{ route('super-admin.abonnements.index') }}">Voir les abonnements</a>
+    </section>
+
     <section class="dashboard-chart-grid">
         <article class="content-card chart-card">
             <div class="card-heading">

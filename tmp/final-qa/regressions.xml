@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="Tests\Feature\FinalQaRegressionTest" file="C:\Users\dell\glv\tests\Feature\FinalQaRegressionTest.php" tests="6" assertions="16" errors="0" failures="6" skipped="0" time="0.966932">
+    <testcase name="test_disabled_account_cannot_mark_notifications_read" file="C:\Users\dell\glv\tests\Feature\FinalQaRegressionTest.php" line="20" class="Tests\Feature\FinalQaRegressionTest" classname="Tests.Feature.FinalQaRegressionTest" assertions="1" time="0.619912">
+      <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\FinalQaRegressionTest::test_disabled_account_cannot_mark_notifications_read&#13;
+Expected response status code [403] but received 302.
+Failed asserting that 302 is identical to 403.
+&#13;
+C:\Users\dell\glv\vendor\laravel\framework\src\Illuminate\Testing\TestResponseAssert.php:45
+C:\Users\dell\glv\vendor\laravel\framework\src\Illuminate\Testing\TestResponse.php:175
+C:\Users\dell\glv\vendor\laravel\framework\src\Illuminate\Testing\Concerns\AssertsStatusCodes.php:141
+C:\Users\dell\glv\tests\Feature\FinalQaRegressionTest.php:27</failure>
+    </testcase>
+    <testcase name="test_approval_rejects_a_period_that_has_already_expired" file="C:\Users\dell\glv\tests\Feature\FinalQaRegressionTest.php" line="31" class="Tests\Feature\FinalQaRegressionTest" classname="Tests.Feature.FinalQaRegressionTest" assertions="2" time="0.076604">
+      <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\FinalQaRegressionTest::test_approval_rejects_a_period_that_has_already_expired&#13;
+Session is missing expected key [errors].
+Failed asserting that false is true.
+&#13;
+C:\Users\dell\glv\vendor\laravel\framework\src\Illuminate\Testing\TestResponseAssert.php:45
+C:\Users\dell\glv\vendor\laravel\framework\src\Illuminate\Testing\TestResponse.php:1547
+C:\Users\dell\glv\vendor\laravel\framework\src\Illuminate\Testing\TestResponse.php:1634
+C:\Users\dell\glv\tests\Feature\FinalQaRegressionTest.php:40</failure>
+    </testcase>
+    <testcase name="test_expiration_alert_can_be_retried_after_notification_delivery_fails" file="C:\Users\dell\glv\tests\Feature\FinalQaRegressionTest.php" line="44" class="Tests\Feature\FinalQaRegressionTest" classname="Tests.Feature.FinalQaRegressionTest" assertions="3" time="0.045024">
+      <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\FinalQaRegressionTest::test_expiration_alert_can_be_retried_after_notification_delivery_fails&#13;
+Une alerte non livrée doit pouvoir être réessayée.
+Failed asserting that false is true.
+&#13;
+C:\Users\dell\glv\tests\Feature\FinalQaRegressionTest.php:59</failure>
+    </testcase>
+    <testcase name="test_super_admin_can_read_the_message_before_processing_a_request" file="C:\Users\dell\glv\tests\Feature\FinalQaRegressionTest.php" line="63" class="Tests\Feature\FinalQaRegressionTest" classname="Tests.Feature.FinalQaRegressionTest" assertions="3" time="0.086739">
+      <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\FinalQaRegressionTest::test_super_admin_can_read_the_message_before_processing_a_request&#13;
+Failed asserting that '&lt;!DOCTYPE html&gt;\n
+&lt;html lang="fr"&gt;\n
+&lt;head&gt;\n
+    &lt;meta charset="utf-8"&gt;\n
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;\n
+    &lt;meta name="description" content="Espace de supervision GLV."&gt;\n
+    &lt;title&gt;Abonnements — GLV&lt;/title&gt;\n
+    &lt;link rel="preload" as="style" href="http://localhost/build/assets/app-wp90rXd6.css" /&gt;&lt;link rel="modulepreload" as="script" href="http://localhost/build/assets/app-DfGpfyxh.js" /&gt;&lt;link rel="stylesheet" href="http://localhost/build/assets/app-wp90rXd6.css" /&gt;&lt;script type="module" src="http://localhost/build/assets/app-DfGpfyxh.js"&gt;&lt;/script&gt;&lt;/head&gt;\n
+&lt;body class="admin-body"&gt;\n
+    &lt;div class="admin-shell"&gt;\n
+        &lt;aside class="admin-sidebar" id="admin-sidebar" data-admin-sidebar aria-label="Navigation principale"&gt;\n
+            &lt;a class="sidebar-brand" href="http://localhost/super-admin/dashboard"&gt;\n
+                &lt;span class="sidebar-car" aria-hidden="true"&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="m5 10 1.7-4h10.6l1.7 4m-14 0h14a2 2 0 0 1 2 2v5H3v-5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/&gt;&lt;circle cx="7" cy="14" r="1.2" fill="currentColor"/&gt;&lt;circle cx="17" cy="14" r="1.2" fill="currentColor"/&gt;&lt;path d="M5 17v2m14-2v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/&gt;\n
+            &lt;/svg&gt;\n
+&lt;/span&gt;\n
+                &lt;span&gt;&lt;strong&gt;GLV&lt;/strong&gt;&lt;small&gt;Plateforme Multi-Agences&lt;/small&gt;&lt;/span&gt;\n
+            &lt;/a&gt;\n
+\n
+            &lt;nav class="sidebar-nav"&gt;\n
+                &lt;a href="http://localhost/super-admin/dashboard" class=""&gt;\n
+                    &lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="m3 11 9-8 9 8M5.5 9.5V21h13V9.5M9 21v-7h6v7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+ &lt;span&gt;Tableau de bord&lt;/span&gt;\n
+                &lt;/a&gt;\n
+                &lt;a href="http://localhost/super-admin/agences" class=""&gt;\n
+                    &lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="M4 21V6.5A1.5 1.5 0 0 1 5.5 5H15v16M8 9h3m-3 4h3m-3 4h3m4-7h3.5a1.5 1.5 0 0 1 1.5 1.5V21M3 21h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+ &lt;span&gt;Agences&lt;/span&gt;\n
+                &lt;/a&gt;\n
+                &lt;a href="http://localhost/super-admin/abonnements" class="active"&gt;\n
+                    &lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/&gt;&lt;path d="M3 9h18M7 14h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/&gt;\n
+            &lt;/svg&gt;\n
+ &lt;span&gt;Abonnements&lt;/span&gt;\n
+                &lt;/a&gt;\n
+            &lt;/nav&gt;\n
+\n
+            &lt;div class="sidebar-spacer"&gt;&lt;/div&gt;\n
+\n
+            &lt;div class="sidebar-visual" aria-hidden="true"&gt;\n
+                &lt;img src="http://localhost/images/glv-login-hero.png" alt=""&gt;\n
+                &lt;p&gt;Des agences plus fortes,&lt;br&gt;une mobilité plus simple.&lt;/p&gt;\n
+            &lt;/div&gt;\n
+\n
+            &lt;nav class="sidebar-nav sidebar-nav-bottom"&gt;\n
+                &lt;a href="http://localhost/super-admin/parametres" class=""&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/&gt;&lt;path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-4V21a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 3 14H2.8v-4H3a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.2 7 7 4.2l.1.1A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.6v-.2h4V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v4H21a1.7 1.7 0 0 0-1.6 1Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+ &lt;span&gt;Paramètres&lt;/span&gt;&lt;/a&gt;\n
+                &lt;form method="POST" action="http://localhost/logout"&gt;\n
+                    &lt;input type="hidden" name="_token" value="3mRUfwt0nNpZGiYX4TUEzIjJNUN7iemtyliFYekf" autocomplete="off"&gt;                    &lt;button type="submit"&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="M10 5H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h5M15 8l4 4-4 4m4-4H9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+ &lt;span&gt;Déconnexion&lt;/span&gt;&lt;/button&gt;\n
+                &lt;/form&gt;\n
+            &lt;/nav&gt;\n
+        &lt;/aside&gt;\n
+\n
+        &lt;button class="sidebar-backdrop" type="button" data-admin-sidebar-close aria-label="Fermer le menu"&gt;&lt;/button&gt;\n
+\n
+        &lt;div class="admin-main"&gt;\n
+            &lt;header class="admin-topbar"&gt;\n
+                &lt;button class="topbar-menu" type="button" data-admin-sidebar-toggle aria-controls="admin-sidebar" aria-expanded="false" aria-label="Ouvrir le menu"&gt;\n
+                    &lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/&gt;\n
+            &lt;/svg&gt;\n
+                &lt;/button&gt;\n
+\n
+                &lt;form class="topbar-search" method="GET" action="http://localhost/super-admin/agences"&gt;\n
+                    &lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/&gt;&lt;path d="m16.5 16.5 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/&gt;\n
+            &lt;/svg&gt;\n
+                    &lt;input type="search" name="q" placeholder="Rechercher une agence, un gérant…" aria-label="Rechercher une agence"&gt;\n
+                &lt;/form&gt;\n
+\n
+                &lt;div class="topbar-actions"&gt;\n
+                    &lt;details class="notification-menu"&gt;\n
+    &lt;summary aria-label="Notifications"&gt;\n
+        &lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+            &lt;/summary&gt;\n
+    &lt;div class="notification-dropdown"&gt;\n
+        &lt;header&gt;\n
+            &lt;span&gt;&lt;strong&gt;Notifications&lt;/strong&gt;&lt;small&gt;0 non lue(s)&lt;/small&gt;&lt;/span&gt;\n
+                    &lt;/header&gt;\n
+        &lt;div class="notification-list"&gt;\n
+                            &lt;p class="notification-empty"&gt;Aucune notification.&lt;/p&gt;\n
+                    &lt;/div&gt;\n
+    &lt;/div&gt;\n
+&lt;/details&gt;\n
+                    &lt;details class="profile-menu"&gt;\n
+                        &lt;summary&gt;\n
+                            &lt;span class="profile-avatar"&gt;SA&lt;/span&gt;\n
+                            &lt;span class="profile-copy"&gt;&lt;strong&gt;Miss Brandi Upton Jr.&lt;/strong&gt;&lt;small&gt;Administrateur global&lt;/small&gt;&lt;/span&gt;\n
+                            &lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+                        &lt;/summary&gt;\n
+                        &lt;div class="profile-dropdown"&gt;\n
+                            &lt;a href="http://localhost/super-admin/parametres#compte"&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/&gt;&lt;path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-4V21a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 3 14H2.8v-4H3a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.2 7 7 4.2l.1.1A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.6v-.2h4V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v4H21a1.7 1.7 0 0 0-1.6 1Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+ Mon compte&lt;/a&gt;\n
+                            &lt;form method="POST" action="http://localhost/logout"&gt;\n
+                                &lt;input type="hidden" name="_token" value="3mRUfwt0nNpZGiYX4TUEzIjJNUN7iemtyliFYekf" autocomplete="off"&gt;                                &lt;button type="submit"&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="M10 5H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h5M15 8l4 4-4 4m4-4H9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+ Se déconnecter&lt;/button&gt;\n
+                            &lt;/form&gt;\n
+                        &lt;/div&gt;\n
+                    &lt;/details&gt;\n
+                &lt;/div&gt;\n
+            &lt;/header&gt;\n
+\n
+            &lt;main class="admin-content"&gt;\n
+                                    &lt;div class="flash-message" role="status" data-flash-message&gt;\n
+                        &lt;span&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+&lt;/span&gt;\n
+                        Votre demande de renouvellement a été envoyée au Super Admin.\n
+                        &lt;button type="button" data-flash-close aria-label="Fermer"&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/&gt;\n
+            &lt;/svg&gt;\n
+&lt;/button&gt;\n
+                    &lt;/div&gt;\n
+                \n
+                    &lt;div class="page-heading"&gt;\n
+        &lt;div&gt;&lt;p class="page-eyebrow"&gt;Pilotage commercial&lt;/p&gt;&lt;h1&gt;Abonnements&lt;/h1&gt;&lt;p&gt;Gérez manuellement les plans et échéances de toutes les agences.&lt;/p&gt;&lt;/div&gt;\n
+        &lt;a class="primary-button" href="http://localhost/super-admin/agences/create"&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/&gt;\n
+            &lt;/svg&gt;\n
+ Nouvelle agence&lt;/a&gt;\n
+    &lt;/div&gt;\n
+\n
+    &lt;section class="kpi-grid agency-kpis" aria-label="Statistiques des abonnements"&gt;\n
+        &lt;article class="kpi-card"&gt;&lt;span class="kpi-icon blue"&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="M4 21V6.5A1.5 1.5 0 0 1 5.5 5H15v16M8 9h3m-3 4h3m-3 4h3m4-7h3.5a1.5 1.5 0 0 1 1.5 1.5V21M3 21h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+&lt;/span&gt;&lt;div&gt;&lt;p&gt;Agences au total&lt;/p&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;small&gt;toutes structures&lt;/small&gt;&lt;/div&gt;&lt;/article&gt;\n
+        &lt;article class="kpi-card"&gt;&lt;span class="kpi-icon green"&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+&lt;/span&gt;&lt;div&gt;&lt;p&gt;Abonnements actifs&lt;/p&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;small&gt;valides aujourd’hui&lt;/small&gt;&lt;/div&gt;&lt;/article&gt;\n
+        &lt;article class="kpi-card"&gt;&lt;span class="kpi-icon orange"&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/&gt;&lt;path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+&lt;/span&gt;&lt;div&gt;&lt;p&gt;En essai&lt;/p&gt;&lt;strong&gt;0&lt;/strong&gt;&lt;small&gt;essais encore valides&lt;/small&gt;&lt;/div&gt;&lt;/article&gt;\n
+        &lt;article class="kpi-card"&gt;&lt;span class="kpi-icon red"&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/&gt;&lt;path d="M9.5 8.5v7m5-7v7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/&gt;\n
+            &lt;/svg&gt;\n
+&lt;/span&gt;&lt;div&gt;&lt;p&gt;Expirés / suspendus&lt;/p&gt;&lt;strong&gt;0&lt;/strong&gt;&lt;small&gt;à régulariser&lt;/small&gt;&lt;/div&gt;&lt;/article&gt;\n
+    &lt;/section&gt;\n
+\n
+    &lt;section class="subscription-attention" aria-label="Abonnements nécessitant votre attention"&gt;\n
+        &lt;header&gt;&lt;div&gt;&lt;p class="page-eyebrow"&gt;Alertes&lt;/p&gt;&lt;h2&gt;Abonnements nécessitant votre attention&lt;/h2&gt;&lt;/div&gt;&lt;/header&gt;\n
+        &lt;div&gt;\n
+            &lt;article class="is-danger"&gt;&lt;strong&gt;0&lt;/strong&gt;&lt;span&gt;abonnement(s) expiré(s)&lt;/span&gt;&lt;/article&gt;\n
+            &lt;article class="is-urgent"&gt;&lt;strong&gt;0&lt;/strong&gt;&lt;span&gt;expire(nt) dans 7 jours&lt;/span&gt;&lt;/article&gt;\n
+            &lt;article class="is-warning"&gt;&lt;strong&gt;0&lt;/strong&gt;&lt;span&gt;expire(nt) dans 30 jours&lt;/span&gt;&lt;/article&gt;\n
+            &lt;article class="is-info"&gt;&lt;strong&gt;1&lt;/strong&gt;&lt;span&gt;demande(s) en attente&lt;/span&gt;&lt;/article&gt;\n
+        &lt;/div&gt;\n
+    &lt;/section&gt;\n
+\n
+    &lt;section class="subscriptions-layout"&gt;\n
+        &lt;article class="content-card list-card subscriptions-list"&gt;\n
+            &lt;form class="filter-bar" method="GET" action="http://localhost/super-admin/abonnements"&gt;\n
+                &lt;label class="filter-search"&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/&gt;&lt;path d="m16.5 16.5 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/&gt;\n
+            &lt;/svg&gt;\n
+&lt;input type="search" name="q" value="" placeholder="Rechercher une agence…" aria-label="Rechercher"&gt;&lt;/label&gt;\n
+                &lt;label&gt;&lt;span class="sr-only"&gt;Statut&lt;/span&gt;&lt;select name="statut"&gt;&lt;option value=""&gt;Tous les statuts&lt;/option&gt;&lt;option value="actif" &gt;Actif&lt;/option&gt;&lt;option value="essai" &gt;Essai&lt;/option&gt;&lt;option value="suspendu" &gt;Suspendu&lt;/option&gt;&lt;option value="expire" &gt;Expiré&lt;/option&gt;&lt;/select&gt;&lt;/label&gt;\n
+                &lt;label&gt;&lt;span class="sr-only"&gt;Plan&lt;/span&gt;&lt;select name="plan"&gt;&lt;option value=""&gt;Tous les plans&lt;/option&gt;&lt;option value="Essai" &gt;Essai&lt;/option&gt;&lt;option value="Basic" &gt;Basic&lt;/option&gt;&lt;option value="Pro" &gt;Pro&lt;/option&gt;&lt;option value="Premium" &gt;Premium&lt;/option&gt;&lt;/select&gt;&lt;/label&gt;\n
+                &lt;button class="filter-button" type="submit"&gt;Filtrer&lt;/button&gt;\n
+                            &lt;/form&gt;\n
+\n
+            &lt;div class="table-scroll"&gt;\n
+                &lt;table class="data-table subscriptions-table"&gt;\n
+                    &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Agence&lt;/th&gt;&lt;th&gt;Plan&lt;/th&gt;&lt;th&gt;Statut&lt;/th&gt;&lt;th&gt;Date début&lt;/th&gt;&lt;th&gt;Date fin&lt;/th&gt;&lt;th&gt;Jours restants&lt;/th&gt;&lt;th&gt;Montant&lt;/th&gt;&lt;th&gt;Actions&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;\n
+                    &lt;tbody&gt;\n
+                                                                    &lt;tr class=""&gt;\n
+                            &lt;td&gt;&lt;div class="agency-cell"&gt;&lt;span class="agency-avatar"&gt;AG&lt;/span&gt;&lt;span&gt;&lt;strong&gt;Agence request-message&lt;/strong&gt;&lt;small&gt;Fès&lt;/small&gt;&lt;/span&gt;&lt;/div&gt;&lt;/td&gt;\n
+                            &lt;td&gt;&lt;span class="plan-badge"&gt;Pro&lt;/span&gt;&lt;/td&gt;\n
+                            &lt;td&gt;&lt;span class="status-badge actif"&gt;&lt;i&gt;&lt;/i&gt;Actif&lt;/span&gt;&lt;/td&gt;\n
+                            &lt;td&gt;—&lt;/td&gt;\n
+                            &lt;td&gt;17/09/2027&lt;/td&gt;\n
+                            &lt;td&gt;&lt;span class="days-badge valid"&gt;365 jours&lt;/span&gt;&lt;/td&gt;\n
+                            &lt;td&gt;—&lt;/td&gt;\n
+                            &lt;td&gt;&lt;a class="table-edit-button" href="http://localhost/super-admin/abonnements?renewal=1&amp;amp;edit=1"&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="m14 5 5 5M4 20l3.5-.8L19 7.7a2.1 2.1 0 0 0-3-3L4.8 16.2 4 20Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+ Voir / Modifier / Renouveler&lt;/a&gt;&lt;/td&gt;\n
+                        &lt;/tr&gt;\n
+                                        &lt;/tbody&gt;\n
+                &lt;/table&gt;\n
+            &lt;/div&gt;\n
+                    &lt;/article&gt;\n
+\n
+            &lt;/section&gt;\n
+\n
+    &lt;section class="content-card renewal-admin-list" id="demandes-renouvellement"&gt;\n
+        &lt;div class="card-heading"&gt;&lt;div&gt;&lt;span class="section-icon"&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/&gt;&lt;path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+&lt;/span&gt;&lt;h2&gt;Demandes de renouvellement&lt;/h2&gt;&lt;/div&gt;&lt;/div&gt;\n
+        &lt;div class="table-scroll"&gt;\n
+            &lt;table class="data-table"&gt;\n
+                &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Agence&lt;/th&gt;&lt;th&gt;Demandeur&lt;/th&gt;&lt;th&gt;Plan actuel&lt;/th&gt;&lt;th&gt;Expiration&lt;/th&gt;&lt;th&gt;Date demande&lt;/th&gt;&lt;th&gt;Statut&lt;/th&gt;&lt;th&gt;Traitement&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;\n
+                &lt;tbody&gt;\n
+                                    &lt;tr&gt;\n
+                        &lt;td&gt;&lt;strong&gt;Agence request-message&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;Allen Frami&lt;/td&gt;&lt;td&gt;Pro&lt;/td&gt;&lt;td&gt;17/09/2027&lt;/td&gt;&lt;td&gt;17/09/2026 17:27&lt;/td&gt;&lt;td&gt;&lt;span class="renewal-status is-pending"&gt;En attente&lt;/span&gt;&lt;/td&gt;\n
+                        &lt;td&gt;\n
+                            &lt;details class="renewal-process"&gt;&lt;summary&gt;Traiter&lt;/summary&gt;\n
+                                &lt;form method="POST" action="http://localhost/super-admin/demandes-renouvellement/1"&gt;\n
+                                    &lt;input type="hidden" name="_token" value="3mRUfwt0nNpZGiYX4TUEzIjJNUN7iemtyliFYekf" autocomplete="off"&gt; &lt;input type="hidden" name="_method" value="PATCH"&gt;                                    &lt;label&gt;Plan&lt;select name="type_abonnement"&gt;&lt;option value="Essai" &gt;Essai&lt;/option&gt;&lt;option value="Basic" &gt;Basic&lt;/option&gt;&lt;option value="Pro" selected&gt;Pro&lt;/option&gt;&lt;option value="Premium" &gt;Premium&lt;/option&gt;&lt;/select&gt;&lt;/label&gt;\n
+                                    &lt;label&gt;Début&lt;input type="date" name="date_debut_abonnement" value="2026-09-17"&gt;&lt;/label&gt;\n
+                                    &lt;label&gt;Fin&lt;input type="date" name="date_expiration" value="2027-09-17"&gt;&lt;/label&gt;\n
+                                    &lt;label&gt;Montant&lt;input type="number" name="montant_abonnement" min="0" step="0.01" value=""&gt;&lt;/label&gt;\n
+                                    &lt;label class="full"&gt;Décision&lt;textarea name="decision_message" rows="2"&gt;&lt;/textarea&gt;&lt;/label&gt;\n
+                                    &lt;div&gt;&lt;button class="primary-button" name="decision" value="approved" type="submit"&gt;Accepter et renouveler&lt;/button&gt;&lt;button class="danger-button" name="decision" value="rejected" type="submit"&gt;Refuser&lt;/button&gt;&lt;/div&gt;\n
+                                &lt;/form&gt;\n
+                            &lt;/details&gt;\n
+                        &lt;/td&gt;\n
+                    &lt;/tr&gt;\n
+                                &lt;/tbody&gt;\n
+            &lt;/table&gt;\n
+        &lt;/div&gt;\n
+    &lt;/section&gt;\n
+            &lt;/main&gt;\n
+        &lt;/div&gt;\n
+    &lt;/div&gt;\n
+&lt;/body&gt;\n
+&lt;/html&gt;\n
+' [UTF-8](length: 17882) contains "QA-MESSAGE-AGENCE-POUR-TRAITEMENT" [ASCII](length: 33).
+&#13;
+C:\Users\dell\glv\vendor\laravel\framework\src\Illuminate\Testing\TestResponseAssert.php:45
+C:\Users\dell\glv\vendor\laravel\framework\src\Illuminate\Testing\TestResponse.php:710
+C:\Users\dell\glv\tests\Feature\FinalQaRegressionTest.php:69</failure>
+    </testcase>
+    <testcase name="test_agency_can_read_the_reason_for_a_rejected_renewal" file="C:\Users\dell\glv\tests\Feature\FinalQaRegressionTest.php" line="72" class="Tests\Feature\FinalQaRegressionTest" classname="Tests.Feature.FinalQaRegressionTest" assertions="4" time="0.081944">
+      <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\FinalQaRegressionTest::test_agency_can_read_the_reason_for_a_rejected_renewal&#13;
+Failed asserting that '&lt;!DOCTYPE html&gt;\n
+&lt;html lang="fr"&gt;\n
+&lt;head&gt;\n
+    &lt;meta charset="utf-8"&gt;\n
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;\n
+    &lt;meta name="description" content="Espace de gestion de votre agence GLV."&gt;\n
+    &lt;title&gt;Mon abonnement — GLV&lt;/title&gt;\n
+    &lt;link rel="preload" as="style" href="http://localhost/build/assets/app-wp90rXd6.css" /&gt;&lt;link rel="modulepreload" as="script" href="http://localhost/build/assets/app-DfGpfyxh.js" /&gt;&lt;link rel="stylesheet" href="http://localhost/build/assets/app-wp90rXd6.css" /&gt;&lt;script type="module" src="http://localhost/build/assets/app-DfGpfyxh.js"&gt;&lt;/script&gt;&lt;/head&gt;\n
+&lt;body class="agency-body"&gt;\n
+    \n
+    &lt;div class="agency-shell"&gt;\n
+        &lt;aside class="agency-sidebar" id="agency-sidebar" data-admin-sidebar aria-label="Navigation de l’agence"&gt;\n
+            &lt;a class="agency-brand" href="http://localhost/dashboard"&gt;\n
+                &lt;span class="agency-brand-icon" aria-hidden="true"&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="m5 10 1.7-4h10.6l1.7 4m-14 0h14a2 2 0 0 1 2 2v5H3v-5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/&gt;&lt;circle cx="7" cy="14" r="1.2" fill="currentColor"/&gt;&lt;circle cx="17" cy="14" r="1.2" fill="currentColor"/&gt;&lt;path d="M5 17v2m14-2v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/&gt;\n
+            &lt;/svg&gt;\n
+&lt;/span&gt;\n
+                &lt;span&gt;&lt;strong&gt;GLV&lt;/strong&gt;&lt;small&gt;Agence de location&lt;/small&gt;&lt;/span&gt;\n
+            &lt;/a&gt;\n
+\n
+            &lt;nav class="agency-nav" aria-label="Menu principal"&gt;\n
+                &lt;a href="http://localhost/dashboard" class=""&gt;\n
+                    &lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="m3 11 9-8 9 8M5.5 9.5V21h13V9.5M9 21v-7h6v7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+ &lt;span&gt;Tableau de bord&lt;/span&gt;\n
+                &lt;/a&gt;\n
+                &lt;a href="http://localhost/voitures" class=""&gt;\n
+                    &lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="m5 10 1.7-4h10.6l1.7 4m-14 0h14a2 2 0 0 1 2 2v5H3v-5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/&gt;&lt;circle cx="7" cy="14" r="1.2" fill="currentColor"/&gt;&lt;circle cx="17" cy="14" r="1.2" fill="currentColor"/&gt;&lt;path d="M5 17v2m14-2v2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/&gt;\n
+            &lt;/svg&gt;\n
+ &lt;span&gt;Voitures&lt;/span&gt;\n
+                &lt;/a&gt;\n
+                &lt;a href="http://localhost/clients" class=""&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="M16 20v-1.5a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4V20M9.5 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm7.5-1a3 3 0 0 0 0-5.8M21 20v-1.5a4 4 0 0 0-3-3.9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/&gt;\n
+            &lt;/svg&gt;\n
+ &lt;span&gt;Clients&lt;/span&gt;&lt;/a&gt;\n
+                &lt;a href="http://localhost/reservations" class=""&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.8"/&gt;&lt;path d="M8 3v4m8-4v4M3 10h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/&gt;\n
+            &lt;/svg&gt;\n
+ &lt;span&gt;Réservations&lt;/span&gt;&lt;/a&gt;\n
+                &lt;a href="http://localhost/contrats" class=""&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/&gt;&lt;path d="M3 9h18M7 14h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/&gt;\n
+            &lt;/svg&gt;\n
+ &lt;span&gt;Contrats&lt;/span&gt;&lt;/a&gt;\n
+                &lt;a href="http://localhost/parametres" class="active"&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/&gt;&lt;path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-4V21a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 3 14H2.8v-4H3a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.2 7 7 4.2l.1.1A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.6v-.2h4V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v4H21a1.7 1.7 0 0 0-1.6 1Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+ &lt;span&gt;Profil / Paramètres&lt;/span&gt;&lt;/a&gt;\n
+            &lt;/nav&gt;\n
+\n
+            &lt;div class="agency-sidebar-spacer"&gt;&lt;/div&gt;\n
+\n
+            &lt;div class="agency-sidebar-visual" aria-hidden="true"&gt;\n
+                &lt;img src="http://localhost/images/glv-login-hero.png" alt=""&gt;\n
+                &lt;p&gt;Votre agence,&lt;br&gt;plus loin avec GLV.&lt;/p&gt;\n
+            &lt;/div&gt;\n
+\n
+            &lt;nav class="agency-nav agency-nav-bottom"&gt;\n
+                &lt;form method="POST" action="http://localhost/logout"&gt;\n
+                    &lt;input type="hidden" name="_token" value="tt1ZXyhNO5I9ihaQBpvi8Xq6tV2sORra5oItUSUA" autocomplete="off"&gt;                    &lt;button type="submit"&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="M10 5H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h5M15 8l4 4-4 4m4-4H9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+ &lt;span&gt;Déconnexion&lt;/span&gt;&lt;/button&gt;\n
+                &lt;/form&gt;\n
+            &lt;/nav&gt;\n
+        &lt;/aside&gt;\n
+\n
+        &lt;button class="agency-sidebar-backdrop" type="button" data-admin-sidebar-close aria-label="Fermer le menu"&gt;&lt;/button&gt;\n
+\n
+        &lt;div class="agency-main"&gt;\n
+            &lt;header class="agency-topbar"&gt;\n
+                &lt;button class="agency-topbar-menu" type="button" data-admin-sidebar-toggle aria-controls="agency-sidebar" aria-expanded="false" aria-label="Ouvrir le menu"&gt;\n
+                    &lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/&gt;\n
+            &lt;/svg&gt;\n
+                &lt;/button&gt;\n
+\n
+                &lt;form class="agency-topbar-search" method="GET" action="http://localhost/voitures"&gt;\n
+                    &lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.8"/&gt;&lt;path d="m16.5 16.5 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/&gt;\n
+            &lt;/svg&gt;\n
+                    &lt;input type="search" name="q" value="" placeholder="Rechercher une voiture…" aria-label="Rechercher"&gt;\n
+                &lt;/form&gt;\n
+\n
+                &lt;div class="agency-topbar-actions"&gt;\n
+                    &lt;details class="notification-menu"&gt;\n
+    &lt;summary aria-label="Notifications"&gt;\n
+        &lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+        &lt;b&gt;2&lt;/b&gt;    &lt;/summary&gt;\n
+    &lt;div class="notification-dropdown"&gt;\n
+        &lt;header&gt;\n
+            &lt;span&gt;&lt;strong&gt;Notifications&lt;/strong&gt;&lt;small&gt;2 non lue(s)&lt;/small&gt;&lt;/span&gt;\n
+                            &lt;form method="POST" action="http://localhost/notifications/read-all"&gt;&lt;input type="hidden" name="_token" value="tt1ZXyhNO5I9ihaQBpvi8Xq6tV2sORra5oItUSUA" autocomplete="off"&gt; &lt;input type="hidden" name="_method" value="PATCH"&gt;&lt;button type="submit"&gt;Tout marquer comme lu&lt;/button&gt;&lt;/form&gt;\n
+                    &lt;/header&gt;\n
+        &lt;div class="notification-list"&gt;\n
+                            &lt;form method="POST" action="http://localhost/notifications/2ef36037-1c57-44b4-bd1a-dc96889532f6/read" class="notification-item is-unread"&gt;\n
+                    &lt;input type="hidden" name="_token" value="tt1ZXyhNO5I9ihaQBpvi8Xq6tV2sORra5oItUSUA" autocomplete="off"&gt; &lt;input type="hidden" name="_method" value="PATCH"&gt;                    &lt;button type="submit"&gt;\n
+                        &lt;i&gt;&lt;/i&gt;&lt;span&gt;&lt;strong&gt;Demande envoyée&lt;/strong&gt;&lt;small&gt;Votre demande de renouvellement a été envoyée.&lt;/small&gt;&lt;time&gt;17/09/2026 à 17:27&lt;/time&gt;&lt;/span&gt;\n
+                    &lt;/button&gt;\n
+                &lt;/form&gt;\n
+                            &lt;form method="POST" action="http://localhost/notifications/93e5cc52-71c4-48ef-9e15-492e50befe17/read" class="notification-item is-unread"&gt;\n
+                    &lt;input type="hidden" name="_token" value="tt1ZXyhNO5I9ihaQBpvi8Xq6tV2sORra5oItUSUA" autocomplete="off"&gt; &lt;input type="hidden" name="_method" value="PATCH"&gt;                    &lt;button type="submit"&gt;\n
+                        &lt;i&gt;&lt;/i&gt;&lt;span&gt;&lt;strong&gt;Demande refusée&lt;/strong&gt;&lt;small&gt;Votre demande de renouvellement a été refusée.&lt;/small&gt;&lt;time&gt;17/09/2026 à 17:27&lt;/time&gt;&lt;/span&gt;\n
+                    &lt;/button&gt;\n
+                &lt;/form&gt;\n
+                    &lt;/div&gt;\n
+    &lt;/div&gt;\n
+&lt;/details&gt;\n
+                    &lt;details class="agency-profile-menu"&gt;\n
+                        &lt;summary&gt;\n
+                            &lt;span class="agency-profile-avatar"&gt;MS&lt;/span&gt;\n
+                            &lt;span class="agency-profile-copy"&gt;&lt;strong&gt;Millie Stoltenberg&lt;/strong&gt;&lt;small&gt;Admin Agence&lt;/small&gt;&lt;em&gt;Agence rejection-reason&lt;/em&gt;&lt;/span&gt;\n
+                            &lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="m6 9 6 6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+                        &lt;/summary&gt;\n
+                        &lt;div class="agency-profile-dropdown"&gt;\n
+                            &lt;span&gt;&lt;strong&gt;Agence rejection-reason&lt;/strong&gt;&lt;small&gt;Fès&lt;/small&gt;&lt;/span&gt;\n
+                            &lt;a href="http://localhost/profil"&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="M16 20v-1.5a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4V20M9.5 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm7.5-1a3 3 0 0 0 0-5.8M21 20v-1.5a4 4 0 0 0-3-3.9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/&gt;\n
+            &lt;/svg&gt;\n
+ Mon profil&lt;/a&gt;\n
+                            &lt;a href="http://localhost/parametres"&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/&gt;&lt;path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-4V21a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 3 14H2.8v-4H3a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.2 7 7 4.2l.1.1A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.6v-.2h4V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v4H21a1.7 1.7 0 0 0-1.6 1Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+ Paramètres&lt;/a&gt;                            &lt;form method="POST" action="http://localhost/logout"&gt;\n
+                                &lt;input type="hidden" name="_token" value="tt1ZXyhNO5I9ihaQBpvi8Xq6tV2sORra5oItUSUA" autocomplete="off"&gt;                                &lt;button type="submit"&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="M10 5H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h5M15 8l4 4-4 4m4-4H9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+ Se déconnecter&lt;/button&gt;\n
+                            &lt;/form&gt;\n
+                        &lt;/div&gt;\n
+                    &lt;/details&gt;\n
+                &lt;/div&gt;\n
+            &lt;/header&gt;\n
+\n
+            &lt;main class="agency-content agency-settings-content"&gt;\n
+                                    &lt;div class="agency-flash" role="status" data-flash-message&gt;\n
+                        &lt;span&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+&lt;/span&gt;\n
+                        Demande de renouvellement refusée.\n
+                        &lt;button type="button" data-flash-close aria-label="Fermer"&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;path d="m6 6 12 12M18 6 6 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/&gt;\n
+            &lt;/svg&gt;\n
+&lt;/button&gt;\n
+                    &lt;/div&gt;\n
+                                \n
+                    \n
+    &lt;header class="agency-page-heading settings-page-heading"&gt;\n
+        &lt;div&gt;&lt;h1&gt;Mon abonnement&lt;/h1&gt;&lt;p&gt;Consultez les détails de votre abonnement et sa période de validité.&lt;/p&gt;&lt;/div&gt;\n
+    &lt;/header&gt;\n
+\n
+    &lt;div class="agency-settings-layout"&gt;\n
+        &lt;nav class="agency-settings-nav" aria-label="Sections des paramètres"&gt;\n
+            &lt;a href="http://localhost/parametres" class="" &gt;\n
+            &lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18"&gt;\n
+                &lt;circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.8"/&gt;&lt;path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1-2.8 2.8-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6v.2h-4V21a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1L4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9A1.7 1.7 0 0 0 3 14H2.8v-4H3a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.2 7 7 4.2l.1.1A1.7 1.7 0 0 0 9 4.6a1.7 1.7 0 0 0 1-1.6v-.2h4V3a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1L19.8 7l-.1.1a1.7 1.7 0 0 0-.3 1.9 1.7 1.7 0 0 0 1.6 1h.2v4H21a1.7 1.7 0 0 0-1.6 1Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+ Informations générales\n
+        &lt;/a&gt;\n
+            &lt;a href="http://localhost/parametres/contact" class="" &gt;\n
+            &lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18"&gt;\n
+                &lt;path d="m3 11 9-8 9 8M5.5 9.5V21h13V9.5M9 21v-7h6v7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+ Adresse et contact\n
+        &lt;/a&gt;\n
+            &lt;a href="http://localhost/parametres/abonnement" class="active"  aria-current="page" &gt;\n
+            &lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18"&gt;\n
+                &lt;rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/&gt;&lt;path d="M3 9h18M7 14h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/&gt;\n
+            &lt;/svg&gt;\n
+ Abonnement\n
+        &lt;/a&gt;\n
+            &lt;a href="http://localhost/parametres/preferences" class="" &gt;\n
+            &lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18"&gt;\n
+                &lt;circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/&gt;&lt;path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+ Préférences\n
+        &lt;/a&gt;\n
+            &lt;a href="http://localhost/parametres/documents" class="" &gt;\n
+            &lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18"&gt;\n
+                &lt;path d="M12 16V4m0 0L7 9m5-5 5 5M5 14v5h14v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+ Documents\n
+        &lt;/a&gt;\n
+            &lt;a href="http://localhost/parametres/utilisateurs" class="" &gt;\n
+            &lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="18" height="18"&gt;\n
+                &lt;path d="M16 20v-1.5a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4V20M9.5 11a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm7.5-1a3 3 0 0 0 0-5.8M21 20v-1.5a4 4 0 0 0-3-3.9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/&gt;\n
+            &lt;/svg&gt;\n
+ Utilisateurs\n
+        &lt;/a&gt;\n
+    &lt;/nav&gt;\n
+        &lt;div class="settings-stack agency-subscription-page"&gt;\n
+            &lt;section class="agency-card subscription-summary-card"&gt;\n
+                &lt;header class="subscription-summary-head"&gt;\n
+                    &lt;div class="subscription-plan-mark" aria-hidden="true"&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="24" height="24"&gt;\n
+                &lt;rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/&gt;&lt;path d="M3 9h18M7 14h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/&gt;\n
+            &lt;/svg&gt;\n
+&lt;/div&gt;\n
+                    &lt;div&gt;&lt;small&gt;Plan actuel&lt;/small&gt;&lt;h2&gt;Pro&lt;/h2&gt;&lt;p&gt;Agence rejection-reason&lt;/p&gt;&lt;/div&gt;\n
+                    &lt;span class="record-status is-actif"&gt;&lt;i&gt;&lt;/i&gt;Actif&lt;/span&gt;\n
+                &lt;/header&gt;\n
+\n
+                &lt;dl class="subscription-metrics"&gt;\n
+                    &lt;div&gt;&lt;dt&gt;Date de début&lt;/dt&gt;&lt;dd&gt;Non définie&lt;/dd&gt;&lt;/div&gt;\n
+                    &lt;div&gt;&lt;dt&gt;Date d’expiration&lt;/dt&gt;&lt;dd&gt;17/09/2027&lt;/dd&gt;&lt;/div&gt;\n
+                    &lt;div&gt;&lt;dt&gt;Jours restants&lt;/dt&gt;&lt;dd&gt;365 jour(s)&lt;/dd&gt;&lt;/div&gt;\n
+                    &lt;div&gt;&lt;dt&gt;Montant&lt;/dt&gt;&lt;dd&gt;Non renseigné&lt;/dd&gt;&lt;/div&gt;\n
+                &lt;/dl&gt;\n
+\n
+                                &lt;p class="subscription-created"&gt;Agence créée le 17/09/2026&lt;/p&gt;\n
+            &lt;/section&gt;\n
+\n
+                            &lt;section class="subscription-state-card is-success" role="status"&gt;\n
+                    &lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="22" height="22"&gt;\n
+                &lt;path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+                    &lt;div&gt;&lt;h2&gt;Votre abonnement est actif.&lt;/h2&gt;&lt;p&gt;Vous pouvez accéder à tous les modules métier de GLV.&lt;/p&gt;&lt;/div&gt;\n
+                &lt;/section&gt;\n
+            \n
+            &lt;section class="agency-card renewal-request-card" id="renouvellement"&gt;\n
+                &lt;div&gt;\n
+                    &lt;h2&gt;Demande de renouvellement&lt;/h2&gt;\n
+                    &lt;p&gt;Transmettez votre demande au Super Admin. Le plan et l’échéance actuels sont joints automatiquement.&lt;/p&gt;\n
+                &lt;/div&gt;\n
+                                    &lt;form method="POST" action="http://localhost/parametres/abonnement/demande"&gt;\n
+                        &lt;input type="hidden" name="_token" value="tt1ZXyhNO5I9ihaQBpvi8Xq6tV2sORra5oItUSUA" autocomplete="off"&gt;                        &lt;dl&gt;\n
+                            &lt;div&gt;&lt;dt&gt;Agence&lt;/dt&gt;&lt;dd&gt;Agence rejection-reason&lt;/dd&gt;&lt;/div&gt;\n
+                            &lt;div&gt;&lt;dt&gt;Plan actuel&lt;/dt&gt;&lt;dd&gt;Pro&lt;/dd&gt;&lt;/div&gt;\n
+                            &lt;div&gt;&lt;dt&gt;Expiration&lt;/dt&gt;&lt;dd&gt;17/09/2027&lt;/dd&gt;&lt;/div&gt;\n
+                            &lt;div&gt;&lt;dt&gt;Jours restants&lt;/dt&gt;&lt;dd&gt;365&lt;/dd&gt;&lt;/div&gt;\n
+                        &lt;/dl&gt;\n
+                        &lt;label class="form-field"&gt;&lt;span&gt;Message (optionnel)&lt;/span&gt;&lt;textarea name="message" rows="3" maxlength="2000"&gt;&lt;/textarea&gt;&lt;/label&gt;\n
+                        &lt;button class="primary-button" type="submit"&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true"&gt;\n
+                &lt;rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.8"/&gt;&lt;path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+ Envoyer la demande&lt;/button&gt;\n
+                    &lt;/form&gt;\n
+                                                    &lt;div class="renewal-history"&gt;&lt;strong&gt;Historique récent&lt;/strong&gt;&lt;p&gt;&lt;span class="renewal-status is-rejected"&gt;Refusée&lt;/span&gt; 17/09/2026&lt;/p&gt;&lt;/div&gt;\n
+                            &lt;/section&gt;\n
+\n
+            &lt;div class="subscription-lower-grid"&gt;\n
+                &lt;section class="agency-card settings-panel subscription-features"&gt;\n
+                    &lt;h2&gt;Fonctionnalités du plan&lt;/h2&gt;\n
+                    &lt;p&gt;Votre abonnement donne accès aux modules disponibles dans GLV.&lt;/p&gt;\n
+                    &lt;ul&gt;\n
+                                                    &lt;li&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="15" height="15"&gt;\n
+                &lt;path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+ Gestion des voitures&lt;/li&gt;\n
+                                                    &lt;li&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="15" height="15"&gt;\n
+                &lt;path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+ Gestion des clients&lt;/li&gt;\n
+                                                    &lt;li&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="15" height="15"&gt;\n
+                &lt;path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+ Réservations&lt;/li&gt;\n
+                                                    &lt;li&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="15" height="15"&gt;\n
+                &lt;path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+ Contrats&lt;/li&gt;\n
+                                                    &lt;li&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="15" height="15"&gt;\n
+                &lt;path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+ Documents&lt;/li&gt;\n
+                                                    &lt;li&gt;&lt;svg viewBox="0 0 24 24" fill="none" aria-hidden="true" width="15" height="15"&gt;\n
+                &lt;path d="m5 12 4 4L19 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/&gt;\n
+            &lt;/svg&gt;\n
+ Utilisateurs de l’agence&lt;/li&gt;\n
+                                            &lt;/ul&gt;\n
+                &lt;/section&gt;\n
+\n
+                &lt;section class="agency-card settings-panel subscription-contact" id="contact-support"&gt;\n
+                    &lt;h2&gt;Contacter l’administrateur&lt;/h2&gt;\n
+                    &lt;p&gt;Contactez l’administrateur GLV pour renouveler ou modifier votre abonnement.&lt;/p&gt;\n
+                                            &lt;p class="subscription-contact-fallback"&gt;Aucune coordonnée de support n’est encore configurée. Contactez l’administrateur de la plateforme.&lt;/p&gt;\n
+                    \n
+                                    &lt;/section&gt;\n
+            &lt;/div&gt;\n
+        &lt;/div&gt;\n
+    &lt;/div&gt;\n
+            &lt;/main&gt;\n
+        &lt;/div&gt;\n
+    &lt;/div&gt;\n
+&lt;/body&gt;\n
+&lt;/html&gt;\n
+' [UTF-8](length: 21741) contains "QA-MOTIF-REFUS-A-COMMUNIQUER" [ASCII](length: 28).
+&#13;
+C:\Users\dell\glv\vendor\laravel\framework\src\Illuminate\Testing\TestResponseAssert.php:45
+C:\Users\dell\glv\vendor\laravel\framework\src\Illuminate\Testing\TestResponse.php:710
+C:\Users\dell\glv\tests\Feature\FinalQaRegressionTest.php:81</failure>
+    </testcase>
+    <testcase name="test_explicit_expired_status_produces_an_expiration_notification" file="C:\Users\dell\glv\tests\Feature\FinalQaRegressionTest.php" line="84" class="Tests\Feature\FinalQaRegressionTest" classname="Tests.Feature.FinalQaRegressionTest" assertions="3" time="0.056709">
+      <failure type="PHPUnit\Framework\ExpectationFailedException">Tests\Feature\FinalQaRegressionTest::test_explicit_expired_status_produces_an_expiration_notification&#13;
+Failed asserting that 0 is identical to 1.
+&#13;
+C:\Users\dell\glv\tests\Feature\FinalQaRegressionTest.php:89</failure>
+    </testcase>
+  </testsuite>
+</testsuites>

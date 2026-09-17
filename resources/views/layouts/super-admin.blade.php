@@ -57,10 +57,7 @@
                 </form>
 
                 <div class="topbar-actions">
-                    <span class="notification-button" aria-label="Notifications">
-                        <x-icon name="bell" />
-                        <span></span>
-                    </span>
+                    <x-notification-menu />
                     <details class="profile-menu">
                         <summary>
                             <span class="profile-avatar">SA</span>
