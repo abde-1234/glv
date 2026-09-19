@@ -102,11 +102,11 @@
         <div class="card-heading"><div><span class="section-icon"><x-icon name="mail" /></span><h2>Demandes de renouvellement</h2></div></div>
         <div class="table-scroll">
             <table class="data-table">
-                <thead><tr><th>Agence</th><th>Demandeur</th><th>Plan actuel</th><th>Expiration</th><th>Date demande</th><th>Statut</th><th>Traitement</th></tr></thead>
+                <thead><tr><th>Agence</th><th>Demandeur</th><th>Message</th><th>Plan actuel</th><th>Expiration</th><th>Date demande</th><th>Statut</th><th>Traitement</th></tr></thead>
                 <tbody>
                 @forelse ($pendingRenewals as $renewal)
                     <tr>
-                        <td><strong>{{ $renewal->agence->nom }}</strong></td><td>{{ $renewal->requester->name }}</td><td>{{ $renewal->current_plan ?: '—' }}</td><td>{{ $renewal->current_expiration?->format('d/m/Y') ?? '—' }}</td><td>{{ $renewal->created_at->format('d/m/Y H:i') }}</td><td><span class="renewal-status is-pending">En attente</span></td>
+                        <td><strong>{{ $renewal->agence->nom }}</strong></td><td>{{ $renewal->requester->name }}</td><td>{{ $renewal->message ?: '—' }}</td><td>{{ $renewal->current_plan ?: '—' }}</td><td>{{ $renewal->current_expiration?->format('d/m/Y') ?? '—' }}</td><td>{{ $renewal->created_at->format('d/m/Y H:i') }}</td><td><span class="renewal-status is-pending">En attente</span></td>
                         <td>
                             <details class="renewal-process"><summary>Traiter</summary>
                                 <form method="POST" action="{{ route('super-admin.renewals.update', $renewal) }}">
@@ -122,7 +122,7 @@
                         </td>
                     </tr>
                 @empty
-                    <tr><td colspan="7"><div class="empty-state">Aucune demande en attente.</div></td></tr>
+                    <tr><td colspan="8"><div class="empty-state">Aucune demande en attente.</div></td></tr>
                 @endforelse
                 </tbody>
             </table>

@@ -6,7 +6,8 @@ use App\Models\Agence;
 use App\Models\SubscriptionNotificationEvent;
 use App\Models\User;
 use App\Notifications\GlvNotification;
-use Illuminate\Database\QueryException;
+use Illuminate\Database\UniqueConstraintViolationException;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Notification;
 
 class SubscriptionNotificationService
@@ -35,6 +36,7 @@ class SubscriptionNotificationService
 
         $days = (int) today()->diffInDays($agency->date_expiration, false);
         $event = match (true) {
+            $agency->statut === 'expire' => 'subscription_expired',
             $days < 0 => 'subscription_expired',
             $days === 1 => 'expiration_1_day',
             in_array($days, [30, 15, 7, 3], true) => 'expiration_'.$days.'_days',
@@ -46,39 +48,38 @@ class SubscriptionNotificationService
         }
 
         try {
-            SubscriptionNotificationEvent::query()->create([
-                'agence_id' => $agency->id,
-                'event_type' => $event,
-                'expiration_date' => $agency->date_expiration,
-            ]);
-        } catch (QueryException $exception) {
-            if (in_array($exception->getCode(), ['23000', '23505'], true)) {
-                return false;
-            }
+            return DB::transaction(function () use ($agency, $days, $event): bool {
+                SubscriptionNotificationEvent::query()->create([
+                    'agence_id' => $agency->id,
+                    'event_type' => $event,
+                    'expiration_date' => $agency->date_expiration,
+                ]);
 
-            throw $exception;
+                $copy = $this->copy($event, $days);
+                Notification::send($agency->users, new GlvNotification([
+                    'type' => $event,
+                    'title' => $copy['title'],
+                    'message' => $copy['message'],
+                    'url' => route('agence.settings.subscription'),
+                    'agency_id' => $agency->id,
+                ]));
+
+                if (in_array($event, ['expiration_7_days', 'subscription_expired'], true)) {
+                    $this->notifySuperAdmins([
+                        'type' => $event,
+                        'title' => $copy['title'].' — '.$agency->nom,
+                        'message' => $copy['message'],
+                        'url' => route('super-admin.abonnements.index', ['q' => $agency->nom]),
+                        'agency_id' => $agency->id,
+                    ]);
+                }
+
+                return true;
+            });
+        } catch (UniqueConstraintViolationException) {
+            return false;
         }
 
-        $copy = $this->copy($event, $days);
-        Notification::send($agency->users, new GlvNotification([
-            'type' => $event,
-            'title' => $copy['title'],
-            'message' => $copy['message'],
-            'url' => route('agence.settings.subscription'),
-            'agency_id' => $agency->id,
-        ]));
-
-        if (in_array($event, ['expiration_7_days', 'subscription_expired'], true)) {
-            $this->notifySuperAdmins([
-                'type' => $event,
-                'title' => $copy['title'].' — '.$agency->nom,
-                'message' => $copy['message'],
-                'url' => route('super-admin.abonnements.index', ['q' => $agency->nom]),
-                'agency_id' => $agency->id,
-            ]);
-        }
-
-        return true;
     }
 
     public function notifySuperAdmins(array $payload): void

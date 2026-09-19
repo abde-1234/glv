@@ -22,7 +22,7 @@ class RenewalRequestController extends Controller
             'decision_message' => ['nullable', 'string', 'max:2000'],
             'type_abonnement' => ['required_if:decision,approved', 'nullable', 'string', 'max:100'],
             'date_debut_abonnement' => ['required_if:decision,approved', 'nullable', 'date'],
-            'date_expiration' => ['required_if:decision,approved', 'nullable', 'date', 'after_or_equal:date_debut_abonnement'],
+            'date_expiration' => ['required_if:decision,approved', 'nullable', 'date', 'after_or_equal:date_debut_abonnement', 'after_or_equal:today'],
             'montant_abonnement' => ['required_if:decision,approved', 'nullable', 'numeric', 'min:0', 'max:9999999999.99'],
         ]);
 
@@ -51,10 +51,17 @@ class RenewalRequestController extends Controller
         });
 
         $approved = $validated['decision'] === RenewalRequest::APPROVED;
+        $decisionMessage = trim((string) ($validated['decision_message'] ?? ''));
+        $notificationMessage = $approved
+            ? 'Votre abonnement a été renouvelé avec succès.'
+            : 'Votre demande de renouvellement a été refusée.';
+        if ($decisionMessage !== '') {
+            $notificationMessage .= ($approved ? ' Note : ' : ' Motif : ').$decisionMessage;
+        }
         $renewalRequest->agence->users()->where('statut', 'actif')->get()->each->notify(new GlvNotification([
             'type' => $approved ? 'renewal_approved' : 'renewal_rejected',
             'title' => $approved ? 'Renouvellement approuvé' : 'Demande refusée',
-            'message' => $approved ? 'Votre abonnement a été renouvelé avec succès.' : 'Votre demande de renouvellement a été refusée.',
+            'message' => $notificationMessage,
             'url' => route('agence.settings.subscription'),
             'agency_id' => $renewalRequest->agence_id,
         ]));

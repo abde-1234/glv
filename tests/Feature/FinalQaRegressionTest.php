@@ -28,6 +28,23 @@ class FinalQaRegressionTest extends TestCase
         $this->assertNull($notice->fresh()->read_at);
     }
 
+    public function test_notification_redirect_does_not_leave_the_application_origin(): void
+    {
+        $tenant = $this->tenant('external-notice');
+        $user = $tenant['admin'];
+        $user->notify(new GlvNotification([
+            'title' => 'Privée',
+            'message' => 'QA',
+            'url' => url('/').'.example.org/phishing',
+        ]));
+        $notice = $user->notifications()->firstOrFail();
+
+        $this->from('/dashboard')
+            ->actingAs($user)
+            ->patch('/notifications/'.$notice->id.'/read')
+            ->assertRedirect('/dashboard');
+    }
+
     public function test_approval_rejects_a_period_that_has_already_expired(): void
     {
         $tenant = $this->tenant('expired-renewal', ['date_expiration' => today()->subMonth()]);

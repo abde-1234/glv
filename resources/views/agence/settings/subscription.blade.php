@@ -97,7 +97,7 @@
                     </form>
                 @endif
                 @if ($renewalHistory->isNotEmpty())
-                    <div class="renewal-history"><strong>Historique récent</strong>@foreach ($renewalHistory as $renewal)<p><span class="renewal-status is-{{ $renewal->status }}">{{ ['pending' => 'En attente', 'approved' => 'Approuvée', 'rejected' => 'Refusée'][$renewal->status] }}</span> {{ $renewal->created_at->format('d/m/Y') }}</p>@endforeach</div>
+                    <div class="renewal-history"><strong>Historique récent</strong>@foreach ($renewalHistory as $renewal)<p><span class="renewal-status is-{{ $renewal->status }}">{{ ['pending' => 'En attente', 'approved' => 'Approuvée', 'rejected' => 'Refusée'][$renewal->status] }}</span> {{ $renewal->created_at->format('d/m/Y') }}@if ($renewal->decision_message)<small>{{ $renewal->decision_message }}</small>@endif</p>@endforeach</div>
                 @endif
             </section>
 
