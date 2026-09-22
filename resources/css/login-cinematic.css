@@ -28,9 +28,16 @@
 }
 
 .auth-cinematic .hero-visual img {
-    object-position: 50% center;
+    object-fit: cover;
+    object-position: 90% center;
     filter: saturate(.96) contrast(1.02) brightness(1.03);
-    transform: none;
+    transform: scaleX(-1);
+}
+
+@media (min-width: 1181px) and (max-width: 1600px) {
+    .auth-cinematic .hero-visual img {
+        object-position: 86% center;
+    }
 }
 
 .auth-cinematic .hero-visual::before {
@@ -159,11 +166,12 @@
     flex: 0 0 auto;
     margin-block: auto;
     padding: 20px clamp(24px, 2.35vw, 34px);
-    border: 1px solid rgba(255, 255, 255, .7);
-    border-radius: 24px;
-    background: rgba(255, 255, 255, .975);
-    box-shadow: 0 24px 60px rgba(0, 14, 31, .24);
-    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, .42);
+    border-radius: 28px;
+    background: rgba(255, 255, 255, .56);
+    box-shadow: 0 24px 60px rgba(5, 25, 50, .16), inset 0 1px 0 rgba(255, 255, 255, .48);
+    -webkit-backdrop-filter: blur(18px) saturate(120%);
+    backdrop-filter: blur(18px) saturate(120%);
     animation: none;
 }
 
@@ -171,7 +179,9 @@
     width: 40px;
     height: 40px;
     margin-bottom: 7px;
-    box-shadow: none;
+    color: #1677ff;
+    background: rgba(225, 239, 255, .82);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .55);
 }
 
 .auth-cinematic .lock-mark svg {
@@ -180,6 +190,7 @@
 }
 
 .auth-cinematic .login-heading h2 {
+    color: #0b1f3a;
     font-size: 28px;
     font-weight: 750;
     line-height: 1.2;
@@ -189,6 +200,7 @@
     margin-top: 3px;
     font-size: 13px;
     line-height: 1.5;
+    color: #5f7188;
 }
 
 .auth-cinematic .login-form {
@@ -202,19 +214,22 @@
 .auth-cinematic .field-group label {
     font-size: 13px;
     margin-bottom: 5px;
+    color: #0f172a;
 }
 
 .auth-cinematic .input-wrap {
     min-height: 46px;
-    border-color: #d7e1ed;
+    border-color: rgba(185, 205, 225, .7);
     border-radius: 12px;
-    background: #fff;
+    color: #637b98;
+    background: rgba(255, 255, 255, .76);
     box-shadow: none;
 }
 
 .auth-cinematic .input-wrap:focus-within {
     border-color: #1683ff;
-    box-shadow: 0 0 0 3px rgba(22, 131, 255, .1);
+    background: rgba(255, 255, 255, .9);
+    box-shadow: 0 0 0 3px rgba(22, 119, 255, .12);
 }
 
 .auth-cinematic .input-wrap.has-error {
@@ -223,6 +238,8 @@
 
 .auth-cinematic .input-wrap input {
     height: 44px;
+    color: #0f172a;
+    background: transparent;
     font-size: 14px;
 }
 
@@ -248,10 +265,18 @@
     max-width: 100%;
 }
 
+.auth-cinematic .remember-option {
+    color: #5f7188;
+}
+
+.auth-cinematic .forgot-link {
+    color: #086cf0;
+}
+
 .auth-cinematic .login-button {
     min-height: 47px;
     border-radius: 12px;
-    background: linear-gradient(100deg, #1683ff, #0759d8);
+    background: linear-gradient(135deg, #2188ff, #0759d8);
     box-shadow: 0 8px 18px rgba(7, 89, 216, .17);
 }
 
@@ -269,6 +294,7 @@
     padding: 7px 10px;
     gap: 9px;
     border-radius: 12px;
+    border-color: rgba(184, 207, 235, .56);
 }
 
 .auth-cinematic .info-note:hover {
@@ -298,6 +324,12 @@
 
 .auth-cinematic .security-note {
     margin-top: 7px;
+    border-color: rgba(183, 224, 204, .58);
+    background: rgba(228, 248, 238, .58);
+}
+
+.auth-cinematic .access-note {
+    background: rgba(230, 240, 255, .58);
 }
 
 .auth-cinematic .auth-footer {
@@ -331,6 +363,10 @@ html[dir="rtl"] .auth-cinematic .hero-visual::before {
 }
 
 @media (min-width: 901px) and (max-width: 1180px) {
+    .auth-cinematic .hero-visual img {
+        object-position: 82% center;
+    }
+
     .auth-cinematic .auth-shell {
         --hero-share: 54%;
         grid-template-columns: minmax(0, 54fr) minmax(0, 46fr);
@@ -354,10 +390,15 @@ html[dir="rtl"] .auth-cinematic .hero-visual::before {
 
     .auth-cinematic .login-card {
         padding: 20px 22px;
+        background: rgba(255, 255, 255, .6);
     }
 }
 
 @media (max-width: 900px) {
+    .auth-cinematic .hero-visual img {
+        object-position: 44% center;
+    }
+
     .auth-cinematic .auth-shell {
         display: flex;
         flex-direction: column;
@@ -407,6 +448,9 @@ html[dir="rtl"] .auth-cinematic .hero-visual::before {
     .auth-cinematic .login-card {
         margin-block: 0;
         padding: 24px;
+        background: rgba(255, 255, 255, .66);
+        -webkit-backdrop-filter: blur(14px) saturate(110%);
+        backdrop-filter: blur(14px) saturate(110%);
     }
 
     .auth-cinematic .input-wrap input {
@@ -424,6 +468,10 @@ html[dir="rtl"] .auth-cinematic .hero-visual::before {
 }
 
 @media (max-width: 430px) {
+    .auth-cinematic .hero-visual img {
+        object-position: 48% center;
+    }
+
     .auth-cinematic .brand-content {
         padding: 28px 24px 4px;
     }
@@ -438,6 +486,9 @@ html[dir="rtl"] .auth-cinematic .hero-visual::before {
 
     .auth-cinematic .login-card {
         padding: 24px 20px;
+        background: rgba(255, 255, 255, .72);
+        -webkit-backdrop-filter: blur(10px) saturate(108%);
+        backdrop-filter: blur(10px) saturate(108%);
     }
 
     .auth-cinematic .login-heading h2 {
