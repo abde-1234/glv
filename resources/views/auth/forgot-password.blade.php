@@ -1,0 +1,10 @@
+@extends('layouts.auth')
+@section('title', __('auth.reset_request.page_title'))
+@section('card-class', 'auth-flow-card')
+@section('content')
+    <a class="auth-back" href="{{ route('login') }}">← {{ __('auth.reset_request.back') }}</a>
+    <div class="login-heading"><span class="lock-mark" aria-hidden="true"><svg viewBox="0 0 28 28" fill="none"><path d="M14 3a10.8 10.8 0 1 0 8.4 4" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/><path d="M17 3h6v6" stroke="currentColor" stroke-width="2.6"/><path d="M10 14h8M14 10v8" stroke="currentColor" stroke-width="2"/></svg></span><h2 id="auth-title">{{ __('auth.reset_request.title') }}</h2><p>{{ __('auth.reset_request.subtitle') }}</p></div>
+    @if (session('status'))<div class="auth-alert success" role="status">{{ session('status') }}</div>@endif
+    <form method="POST" action="{{ route('password.email') }}" class="login-form" data-submit-once novalidate>@csrf<div class="field-group"><label for="email">{{ __('auth.email') }}</label><div class="input-wrap @error('email') has-error @enderror"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6.5h16v11H4z" stroke="currentColor" stroke-width="1.8"/><path d="m5 8 7 5 7-5" stroke="currentColor" stroke-width="1.8"/></svg><input id="email" name="email" type="email" value="{{ old('email') }}" autocomplete="email" placeholder="{{ __('auth.email_placeholder') }}" required autofocus @error('email') aria-invalid="true" aria-describedby="email-error" @enderror></div>@error('email')<p class="field-error" id="email-error" role="alert">{{ $message }}</p>@enderror</div><button class="login-button" type="submit" data-loading-text="{{ __('auth.reset_request.submitting') }}"><span data-button-label>{{ __('auth.reset_request.submit') }}</span><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 12h14m-5-5 5 5-5 5" stroke="currentColor" stroke-width="2"/></svg></button></form>
+    <div class="auth-help"><strong>{{ __('auth.reset_request.help_title') }}</strong><p>{{ __('auth.reset_request.help_text') }}</p><ol>@foreach (__('auth.reset_request.steps') as $step)<li>{{ $step }}</li>@endforeach</ol></div>
+@endsection

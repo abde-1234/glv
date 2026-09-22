@@ -12,10 +12,14 @@ use App\Http\Controllers\Agence\RenewalRequestController as AgencyRenewalRequest
 use App\Http\Controllers\Agence\SettingsController;
 use App\Http\Controllers\Agence\VoitureController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\LocaleController;
 use App\Http\Controllers\SuperAdmin\AbonnementController;
 use App\Http\Controllers\SuperAdmin\AgenceController;
 use App\Http\Controllers\SuperAdmin\DashboardController;
+use App\Http\Controllers\SuperAdmin\PasswordResetRequestController;
 use App\Http\Controllers\SuperAdmin\RenewalRequestController as SuperAdminRenewalRequestController;
 use App\Http\Controllers\SuperAdmin\SuperAdminSettingsController;
 use App\Models\User;
@@ -31,9 +35,19 @@ Route::get('/', function () {
     };
 });
 
+Route::post('/langue', [LocaleController::class, 'update'])->name('locale.update');
+
 Route::middleware('guest')->group(function () {
     Route::get('/login', [LoginController::class, 'create'])->name('login');
     Route::post('/login', [LoginController::class, 'store'])->name('login.store');
+    Route::get('/mot-de-passe-oublie', [ForgotPasswordController::class, 'create'])->name('password.request');
+    Route::post('/mot-de-passe-oublie', [ForgotPasswordController::class, 'store'])
+        ->middleware('throttle:password-reset-requests')
+        ->name('password.email');
+    Route::get('/reinitialiser-mot-de-passe/{token}', [ResetPasswordController::class, 'create'])->name('password.reset');
+    Route::post('/reinitialiser-mot-de-passe', [ResetPasswordController::class, 'store'])
+        ->middleware('throttle:password-reset')
+        ->name('password.update');
 });
 
 Route::post('/logout', [LoginController::class, 'destroy'])
@@ -61,6 +75,10 @@ Route::prefix('super-admin')->name('super-admin.')->middleware(['auth', 'super_a
     Route::get('/abonnements', [AbonnementController::class, 'index'])->name('abonnements.index');
     Route::patch('/abonnements/{agence}', [AbonnementController::class, 'update'])->name('abonnements.update');
     Route::patch('/demandes-renouvellement/{agence}', [SuperAdminRenewalRequestController::class, 'update'])->name('renewals.update');
+    Route::get('/demandes-reinitialisation', [PasswordResetRequestController::class, 'index'])->name('password-resets.index');
+    Route::get('/demandes-reinitialisation/{agence}', [PasswordResetRequestController::class, 'show'])->name('password-resets.show');
+    Route::patch('/demandes-reinitialisation/{agence}/approuver', [PasswordResetRequestController::class, 'approve'])->name('password-resets.approve');
+    Route::patch('/demandes-reinitialisation/{agence}/refuser', [PasswordResetRequestController::class, 'reject'])->name('password-resets.reject');
 });
 
 Route::middleware(['auth', 'admin_agence'])->group(function () {

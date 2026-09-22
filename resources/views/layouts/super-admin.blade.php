@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Espace de supervision GLV.">
     <title>@yield('title', 'Super Admin') — GLV</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/branding/glv-mark.png') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="admin-body">
     <div class="admin-shell">
         <aside class="admin-sidebar" id="admin-sidebar" data-admin-sidebar aria-label="Navigation principale">
             <a class="sidebar-brand" href="{{ route('super-admin.dashboard') }}">
-                <span class="sidebar-car" aria-hidden="true"><x-icon name="car" /></span>
-                <span><strong>GLV</strong><small>Plateforme Multi-Agences</small></span>
+                <picture><source media="(min-width: 821px) and (max-width: 1180px)" srcset="{{ asset('images/branding/glv-mark.png') }}"><img class="sidebar-brand-image" src="{{ asset('images/branding/glv-logo.png') }}" width="2172" height="724" alt="GLV — Location de voitures"></picture>
             </a>
 
             <nav class="sidebar-nav">
@@ -24,6 +24,9 @@
                 </a>
                 <a href="{{ route('super-admin.abonnements.index') }}" @class(['active' => request()->routeIs('super-admin.abonnements.*')])>
                     <x-icon name="card" /> <span>Abonnements</span>
+                </a>
+                <a href="{{ route('super-admin.password-resets.index') }}" @class(['active' => request()->routeIs('super-admin.password-resets.*')])>
+                    <x-icon name="lock" /> <span>Demandes de réinitialisation</span>
                 </a>
             </nav>
 
@@ -58,8 +61,8 @@
 
                 <div class="topbar-actions">
                     <x-notification-menu />
-                    <details class="profile-menu">
-                        <summary>
+                    <details class="profile-menu" data-disclosure-menu>
+                        <summary aria-haspopup="true" aria-expanded="false">
                             <span class="profile-avatar">SA</span>
                             <span class="profile-copy"><strong>{{ auth()->user()->name }}</strong><small>Administrateur global</small></span>
                             <x-icon name="chevron-down" />

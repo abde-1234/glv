@@ -144,7 +144,7 @@ class AgenceController extends Controller
     public function destroy(Agence $agence): RedirectResponse
     {
         DB::transaction(function () use ($agence): void {
-            $agence->users()->delete();
+            $agence->users()->eachById(fn (User $user) => $user->delete());
             $agence->delete();
         });
 

@@ -89,6 +89,11 @@ class Agence extends Model
         return $this->hasMany(RenewalRequest::class);
     }
 
+    public function passwordResetRequests(): HasMany
+    {
+        return $this->hasMany(PasswordResetRequest::class);
+    }
+
     public function subscriptionDaysRemaining(): ?int
     {
         if ($this->date_expiration === null) {

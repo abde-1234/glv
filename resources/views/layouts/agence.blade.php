@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Espace de gestion de votre agence GLV.">
     <title>@yield('title', 'Espace Agence') — GLV</title>
+    <link rel="icon" type="image/png" href="{{ asset('images/branding/glv-mark.png') }}">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="agency-body">
@@ -33,8 +34,7 @@
     <div class="agency-shell">
         <aside class="agency-sidebar" id="agency-sidebar" data-admin-sidebar aria-label="Navigation de l’agence">
             <a class="agency-brand" href="{{ route('dashboard') }}">
-                <span class="agency-brand-icon" aria-hidden="true"><x-icon name="car" /></span>
-                <span><strong>GLV</strong><small>Agence de location</small></span>
+                <picture><source media="(min-width: 901px) and (max-width: 1180px)" srcset="{{ asset('images/branding/glv-mark.png') }}"><img class="agency-brand-image" src="{{ asset('images/branding/glv-logo.png') }}" width="2172" height="724" alt="GLV — Location de voitures"></picture>
             </a>
 
             <nav class="agency-nav" aria-label="Menu principal">
@@ -80,8 +80,8 @@
 
                 <div class="agency-topbar-actions">
                     <x-notification-menu />
-                    <details class="agency-profile-menu">
-                        <summary>
+                    <details class="agency-profile-menu" data-disclosure-menu>
+                        <summary aria-haspopup="true" aria-expanded="false">
                             <span class="agency-profile-avatar">{{ $agencyInitials ?: 'AA' }}</span>
                             <span class="agency-profile-copy"><strong>{{ $agencyUser->name }}</strong><small>{{ $agencyUser->role === \App\Models\User::ROLE_EMPLOYE ? 'Employé' : 'Admin Agence' }}</small><em>{{ $agency->nom }}</em></span>
                             <x-icon name="chevron-down" />

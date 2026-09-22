@@ -1,6 +1,9 @@
 import './bootstrap';
 
 document.querySelectorAll('[data-password-toggle]').forEach((button) => {
+    const showLabel = button.dataset.labelShow || button.getAttribute('aria-label') || 'Afficher le mot de passe';
+    const hideLabel = button.dataset.labelHide || 'Masquer le mot de passe';
+
     button.addEventListener('click', () => {
         const input = document.getElementById(button.getAttribute('aria-controls'));
 
@@ -11,7 +14,105 @@ document.querySelectorAll('[data-password-toggle]').forEach((button) => {
         const isVisible = input.type === 'text';
         input.type = isVisible ? 'password' : 'text';
         button.classList.toggle('is-visible', !isVisible);
-        button.setAttribute('aria-label', isVisible ? 'Afficher le mot de passe' : 'Masquer le mot de passe');
+        button.setAttribute('aria-label', isVisible ? showLabel : hideLabel);
+    });
+});
+
+document.querySelectorAll('[data-language-selector]').forEach((selector) => {
+    const trigger = selector.querySelector('[data-language-trigger]');
+    const menu = selector.querySelector('[data-language-menu]');
+    const items = [...(menu?.querySelectorAll('[role="menuitem"]') || [])];
+
+    if (!trigger || !menu) return;
+
+    const setOpen = (open, focusItem = false) => {
+        trigger.setAttribute('aria-expanded', String(open));
+        menu.hidden = !open;
+        selector.classList.toggle('is-open', open);
+        if (open && focusItem) items[0]?.focus();
+    };
+
+    trigger.addEventListener('click', () => setOpen(menu.hidden));
+    trigger.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+            event.preventDefault();
+            setOpen(true, true);
+            if (event.key === 'ArrowUp') items.at(-1)?.focus();
+        }
+    });
+
+    menu.addEventListener('keydown', (event) => {
+        const currentIndex = items.indexOf(document.activeElement);
+
+        if (event.key === 'Escape') {
+            event.preventDefault();
+            setOpen(false);
+            trigger.focus();
+        } else if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+            event.preventDefault();
+            const offset = event.key === 'ArrowDown' ? 1 : -1;
+            items[(currentIndex + offset + items.length) % items.length]?.focus();
+        } else if (event.key === 'Home' || event.key === 'End') {
+            event.preventDefault();
+            items[event.key === 'Home' ? 0 : items.length - 1]?.focus();
+        }
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!selector.contains(event.target)) setOpen(false);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !menu.hidden) {
+            setOpen(false);
+            trigger.focus();
+        }
+    });
+});
+
+document.querySelectorAll('[data-submit-once]').forEach((form) => {
+    form.addEventListener('submit', () => {
+        const button = form.querySelector('button[type="submit"]');
+        const label = button?.querySelector('[data-button-label]');
+
+        if (!button || button.disabled) return;
+        button.disabled = true;
+        button.setAttribute('aria-busy', 'true');
+        if (label && button.dataset.loadingText) label.textContent = button.dataset.loadingText;
+    });
+});
+
+const disclosureMenus = [...document.querySelectorAll('[data-disclosure-menu]')];
+
+disclosureMenus.forEach((menu) => {
+    const summary = menu.querySelector(':scope > summary');
+    if (!summary) return;
+
+    const syncExpandedState = () => summary.setAttribute('aria-expanded', String(menu.open));
+
+    menu.addEventListener('toggle', () => {
+        syncExpandedState();
+        if (menu.open) {
+            disclosureMenus.filter((other) => other !== menu).forEach((other) => other.removeAttribute('open'));
+        }
+    });
+
+    syncExpandedState();
+});
+
+document.addEventListener('click', (event) => {
+    disclosureMenus.forEach((menu) => {
+        if (menu.open && !menu.contains(event.target)) menu.removeAttribute('open');
+    });
+});
+
+document.addEventListener('keydown', (event) => {
+    if (event.key !== 'Escape') return;
+
+    disclosureMenus.forEach((menu) => {
+        if (!menu.open) return;
+        menu.removeAttribute('open');
+        menu.querySelector(':scope > summary')?.focus();
     });
 });
 

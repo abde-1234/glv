@@ -6,6 +6,7 @@ namespace App\Models;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -21,6 +22,13 @@ class User extends Authenticatable
 
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
+
+    protected static function booted(): void
+    {
+        static::deleting(function (User $user): void {
+            $user->notifications()->delete();
+        });
+    }
 
     // Mirror the database default on newly created models before their first reload.
     protected $attributes = ['statut' => 'actif'];
@@ -66,5 +74,15 @@ class User extends Authenticatable
     public function agence(): BelongsTo
     {
         return $this->belongsTo(Agence::class);
+    }
+
+    public function passwordResetRequests(): HasMany
+    {
+        return $this->hasMany(PasswordResetRequest::class);
+    }
+
+    public function processedPasswordResetRequests(): HasMany
+    {
+        return $this->hasMany(PasswordResetRequest::class, 'processed_by');
     }
 }

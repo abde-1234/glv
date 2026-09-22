@@ -3,8 +3,8 @@
     $headerNotifications = $notificationUser->notifications()->latest()->limit(8)->get();
     $unreadNotificationCount = $notificationUser->unreadNotifications()->count();
 @endphp
-<details class="notification-menu">
-    <summary aria-label="Notifications">
+<details class="notification-menu" data-disclosure-menu>
+    <summary aria-label="Notifications, {{ $unreadNotificationCount }} non lue(s)" aria-haspopup="true" aria-expanded="false">
         <x-icon name="bell" />
         @if ($unreadNotificationCount > 0)<b>{{ $unreadNotificationCount > 99 ? '99+' : $unreadNotificationCount }}</b>@endif
     </summary>
@@ -20,7 +20,7 @@
                 <form method="POST" action="{{ route('notifications.read', $notification->id) }}" @class(['notification-item', 'is-unread' => $notification->unread()])>
                     @csrf @method('PATCH')
                     <button type="submit">
-                        <i></i><span><strong>{{ $notification->data['title'] ?? 'Notification' }}</strong><small>{{ $notification->data['message'] ?? '' }}</small><time>{{ $notification->created_at->format('d/m/Y à H:i') }}</time></span>
+                        <i aria-hidden="true"></i><span><strong>{{ $notification->data['title'] ?? 'Notification' }}</strong><small>{{ $notification->data['message'] ?? '' }}</small><time datetime="{{ $notification->created_at->toAtomString() }}" title="{{ $notification->created_at->format('d/m/Y à H:i:s') }}">{{ $notification->created_at->diffForHumans() }}</time></span>
                     </button>
                 </form>
             @empty
